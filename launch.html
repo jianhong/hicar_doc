@@ -37,10 +37,11 @@
       $("#footer").load("footer.html");
       getCmd = function(){
         var cmd = "nextflow run jianhong/hicar -r " + $("#version").val();
-        const params0 = ["profile"];
-        for(let i=0; i<params0.length; i++){
-          if($("#"+params0[i]).val()!=""){
-            cmd += " -" + params0[i] + " " + $("#"+params0[i]).val();
+        const params0 = ["profile", "c"];
+        const params01 = ["profile", "config"];
+        for(let i=0; i<params01.length; i++){
+          if($("#"+params01[i]).val()!=""){
+            cmd += " -" + params0[i] + " " + $("#"+params01[i]).val();
           }
         }
         const params1 = ["input", "outdir", "email", "genome", "enzyme"];
@@ -132,6 +133,9 @@
           <option value="institute">institute</option>
         </select>
       </li>
+      <li> <label for="config">config</label>
+        <input type="text" id="config" name="config" value="profile.config" class='hicarinput'>
+      </li>
       <li> <label for="input">sample information csv filename</label><input type="text" id="input" name="input" value="designTable.csv" class='hicarinput'></li>
       <li> <label for="outdir">output directory</label><input type="text" id="outdir" name="outdir" value="results" class='hicarinput'></li>
       <li> <label for="email">email</label><input type="text" id="email" name="email" value="your.email@xxx.edu" class='hicarinput'></li>
@@ -192,7 +196,7 @@
       </li>
       <li>
         <label for="skip_cutadapt">skip cutadapt </label><input type="checkbox" id="skip_cutadapt" name="skip_cutadapt" class='hicarinput'>
-        <label for="cutadapt_5end">If not skip, 5 ends to be removed</label><input type="text" id="cutadapt_5end" name="cutadapt_5end" value="^TAC" class='hicarinput'>
+        <label for="cutadapt_5end">If not skip, 5 ends to be removed by </label><input type="text" id="cutadapt_5end" name="cutadapt_5end" value="^TAC" class='hicarinput'>
       </li>
       <li>
         <label for="hpc">Use cluster</label><input type="checkbox" id="hpc" name="hpc" class='hicarinput'>
@@ -270,6 +274,30 @@
   <div class="alert border bg-light small">
         <p>The command: </p>
         <code id="code"></code>
+  </div>
+  <div class="alert border bg-light small">
+        <p>Example of profile.config: </p>
+        <pre>
+// submit by slurm
+process.executor = "slurm"
+process.clusterOptions = "-J SomeJob -p scavenger"
+    
+params {
+    // Limit resources
+    max_cpus = 16
+    max_memory = 240.GB
+    max_time   = 240.h
+}
+
+process {
+    withName: PAIRTOOLS_SORT {
+        memory        = 120.GB
+    }
+    withName: MAPS_CALLPEAK {
+        memory        = 120.GB
+    }
+}
+        </pre>
   </div>
 </div>
 
