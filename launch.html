@@ -104,10 +104,16 @@
                   }
                   return(0);
               };
-        onComplete = function(counts, e){
+        onComplete = function(counts){
             var rn = Math. floor(maxlines/4);
             counts = 100*counts/rn;
-            alert("There are " + counts + " % of " + rn + " reads contains "+ $("#cutadapt_5end").val() + "!");
+            var prefix = "";
+            if(counts>50){
+                prefix = "Congratulations! No issue detected.";
+            }else{
+                prefix = "Sorry, there may have some issues with your cutadapt parameter!.";
+            }
+            alert(prefix + "\nThere are " + counts + " % of top " + rn + " reads contains "+ $("#cutadapt_5end").val() + "!");
         }
         fr.onload = function() {
             // Use stream:true in case we cut the file
@@ -131,25 +137,31 @@
             seek();
         };
         fr.onerror = function() {
-            onComplete(counts, fr.error);
+            alert("Wrong format of you input data!");
+            onComplete(counts);
         };
         seek();
         
         function seek() {
-            if (linecount === maxlines) {
-                // We found enough lines.
-                onComplete(counts); // Done.
-                return;
+            try{
+                if (linecount === maxlines) {
+                    // We found enough lines.
+                    onComplete(counts); // Done.
+                    return;
+                }
+                if (offset !== 0 && offset >= file.size) {
+                    // We did not find all lines, but there are no more lines.
+                    linenumber++;
+                    counts += forEachLine(lines[i] + '\n', linenumber-1); // This is from lines.pop(), before.
+                    onComplete(counts); // Done
+                    return;
+                }
+                var slice = file.slice(offset, offset + CHUNK_SIZE);
+                fr.readAsArrayBuffer(slice);
             }
-            if (offset !== 0 && offset >= file.size) {
-                // We did not find all lines, but there are no more lines.
-                linenumber++;
-                counts += forEachLine(lines[i] + '\n', linenumber-1); // This is from lines.pop(), before.
-                onComplete(counts); // Done
-                return;
+            catch(e){
+                alert("Wrong format of you input data!");
             }
-            var slice = file.slice(offset, offset + CHUNK_SIZE);
-            fr.readAsArrayBuffer(slice);
         }
     }
     function checkAdapter(){
@@ -163,7 +175,7 @@
                   alert("The gz file is not support yet. Please try to load top 1000 lines by zcat f1_reads.gz > r1_test.fastq!");
                   return;
               }
-              readTopNLines(file, 1000, function onComplete(){});
+              readTopNLines(file, 4000, function onComplete(){});
           }
       }
       $("#fastq_r1").change(checkAdapter);
