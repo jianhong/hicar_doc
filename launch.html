@@ -89,48 +89,132 @@
         var cmd = getCmd();
         $("#code").text(cmd);
       });
-      $("#input").change(function(){
+     function readTopNLines(file, maxlines) {
+        var CHUNK_SIZE = 50000; // 50kb, arbitrarily chosen.
+        var decoder = new TextDecoder();
+        var offset = 0;
+        var linecount = 0;
+        var linenumber = 0;
+        var results = '';
+        var fr = new FileReader();
+        var counts =0;
+        forEachLine = function(line, i){
+                  if(i % 4 == 1){
+                      return(new RegExp($("#cutadapt_5end").val()).test(line)?1:0);
+                  }
+                  return(0);
+              };
+        onComplete = function(counts, e){
+            var rn = Math. floor(maxlines/4);
+            counts = 100*counts/rn;
+            alert("There are " + counts + " % of " + rn + " reads contains "+ $("#cutadapt_5end").val() + "!");
+        }
+        fr.onload = function() {
+            // Use stream:true in case we cut the file
+            // in the middle of a multi-byte character
+            results += decoder.decode(fr.result, {stream: true});
+            var lines = results.split('\n');
+            results = lines.pop(); // In case the line did not end yet.
+            linecount += lines.length;
+        
+            if (linecount > maxlines) {
+                // Read too many lines? Truncate the results.
+                lines.length -= linecount - maxlines;
+                linecount = maxlines;
+            }
+        
+            for (var i = 0; i < lines.length; ++i) {
+                linenumber++;
+                counts += forEachLine(lines[i] + '\n', linenumber-1);
+            }
+            offset += CHUNK_SIZE;
+            seek();
+        };
+        fr.onerror = function() {
+            onComplete(counts, fr.error);
+        };
+        seek();
+        
+        function seek() {
+            if (linecount === maxlines) {
+                // We found enough lines.
+                onComplete(counts); // Done.
+                return;
+            }
+            if (offset !== 0 && offset >= file.size) {
+                // We did not find all lines, but there are no more lines.
+                linenumber++;
+                counts += forEachLine(lines[i] + '\n', linenumber-1); // This is from lines.pop(), before.
+                onComplete(counts); // Done
+                return;
+            }
+            var slice = file.slice(offset, offset + CHUNK_SIZE);
+            fr.readAsArrayBuffer(slice);
+        }
+    }
+    function checkAdapter(){
+          if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+              alert('The File APIs are not fully supported in this browser.');
+              return;
+          } 
+          var file = $('#fastq_r1').prop('files')[0];
+          if(file){
+              if($('#fastq_r1').val().split('.').pop().toLowerCase()=="gz"){
+                  alert("The gz file is not support yet. Please try to load top 1000 lines by zcat f1_reads.gz > r1_test.fastq!");
+                  return;
+              }
+              readTopNLines(file, 1000, function onComplete(){});
+          }
+      }
+      $("#fastq_r1").change(checkAdapter);
+      $("#cutadapt_5end").change(checkAdapter);
+      function checkInput(){
           if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
               alert('The File APIs are not fully supported in this browser.');
               return;
           } 
           var file = $('#input').prop('files')[0];
-          var fr = new FileReader();
-          fr.readAsText(file);
-          fr.onload = function (evt) {
-              var data;
-              try{
-                  data = $.csv.toObjects(evt.target.result);
-              }
-              catch(e){
-                  alert("The sample must be a csv file.");
-                  return;
-              }
-              const neededKeys = ['group', 'replicate', 'fastq_1', 'fastq_2'];
-              var key_exist = neededKeys.every(key => Object.keys(data[0]).includes(key));
-              if(!key_exist){
-                  alert('The sample information must contain the columns named as "group", "replicate", "fastq_1", and "fastq_2"');
-                  return;
-              }
-              var samples = [];
-              data.forEach(function(it){
-                  samples.push(it.group + it.replicate);
-              });
-              function unique(array){
-                    return array.filter(function(el, index, arr) {
-                        return index === arr.indexOf(el);
-                    });
-              }
-              var len = samples.length;
-              var len2 = unique(samples).length;
-              if(len>len2){
-                  if((!Object.keys(data[0]).includes('techniquereplicate')) && $("#version").val()=="dev"){
-                      alert('The sample information must contain the columns named as "techniquereplicate"');
+          if(file){
+              var fr = new FileReader();
+              fr.readAsText(file);
+              fr.onload = function (evt) {
+                  var data;
+                  try{
+                      data = $.csv.toObjects(evt.target.result);
+                  }
+                  catch(e){
+                      alert("The sample must be a csv file.");
                       return;
                   }
-              }
-          };
-      });
+                  const neededKeys = ['group', 'replicate', 'fastq_1', 'fastq_2'];
+                  var key_exist = neededKeys.every(key => Object.keys(data[0]).includes(key));
+                  if(!key_exist){
+                      alert('The sample information must contain the columns named as "group", "replicate", "fastq_1", and "fastq_2"');
+                      return;
+                  }
+                  var samples = [];
+                  data.forEach(function(it){
+                      samples.push(it.group + it.replicate);
+                  });
+                  function unique(array){
+                        return array.filter(function(el, index, arr) {
+                            return index === arr.indexOf(el);
+                        });
+                  }
+                  var len = samples.length;
+                  var len2 = unique(samples).length;
+                  if(len>len2){
+                      if((!Object.keys(data[0]).includes('techniquereplicate')) && $("#version").val()=="dev"){
+                          alert('The sample information must contain the columns named as "techniquereplicate"');
+                          return;
+                      }
+                  }
+              };
+          }
+          
+      }
+      $("#input").change(checkInput);
+      $("#version").change(checkInput);
   });
   </script>
 </head>
@@ -330,6 +414,13 @@
          </div>
          <div class="col me-auto">
                 <input type="text" id="cutadapt_5end" name="cutadapt_5end" value="^TAC" class='hicarinput'>
+         </div>
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"></div>
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+             <label for="cutadapt_validate">Validate by one R1 reads</label>
+         </div>
+         <div class="col me-auto">
+                <input id="fastq_r1" name="fastq_r1" type="file"/>
          </div>
       </div>
       
