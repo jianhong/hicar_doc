@@ -10,9 +10,7 @@
   <link rel="shortcut icon" href="./assets/img/logo/nf-core-logo-square.png" type="image/png">
   <link rel="alternate" type="application/rss+xml" title="nf-core: Events" href="./events/rss">
   <!-- FontAwesome -->
-  <script type="text/javascript" async="" src="./assets/analytics.js"></script><script type="text/javascript" async="" src="./assets/js"></script><script src="./assets/471b59d3f8.js"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async="" src="./assets/js(1)"></script>
+  <script type="text/javascript" async="" src="./assets/analytics.js"></script><script type="text/javascript" async="" src="./assets/js"></script>
   <!-- Other JS -->
   <script src="./assets/jquery.min.js"></script>
   <script src="./assets/bootstrap.bundle.min.js"></script>
@@ -37,6 +35,7 @@
   $(document).ready(function(){
       $("#header").load("header.html");
       $("#footer").load("footer.html");
+      $(".genomeoption").hide();
       $("#cmdform").validate();
       getCmd = function(){
         var cmd = "nextflow run jianhong/hicar -r " + $("#version").val();
@@ -47,12 +46,25 @@
             cmd += " -" + params0[i] + " " + $("#"+params01[i]).val();
           }
         }
-        const params1 = ["input", "outdir", "email", "genome", "enzyme"];
+        const params1 = ["input", "outdir", "email", "enzyme"];
         for(let i=0; i<params1.length; i++){
           if($("#"+params1[i]).val()!=""){
             cmd += " --" + params1[i] + " " + $("#"+params1[i]).val();
           }
         }
+        if($("#genome").val()!="custom"){
+            cmd += " --genome " + $("#genome").val();
+        }else{
+            const genome_params = ["fasta", "gtf"];
+            for(let i=0; i<genome_params.length; i++){
+              if($("#"+genome_params[i]).val()!=""){
+                cmd += " --" + genome_params[i] + " " + $("#"+genome_params[i]).val();
+              }else{
+                  alert(genome_params[i]+" is required for customized genome!");
+              }
+            }
+        }
+        
         if(!$("#skip_cutadapt").is(':checked')){
           if($("#cutadapt_5end").val()!=""){
             cmd += " --cutadapt_5end \"" + $("#cutadapt_5end").val() + "\"";
@@ -229,6 +241,13 @@
       }
       $("#input").change(checkInput);
       $("#version").change(checkInput);
+      $("#genome").change(function(){
+          if($("#genome").val()=="custom"){
+              $(".genomeoption").show();
+          }else{
+              $(".genomeoption").hide();
+          }
+      });
   });
   </script>
 </head>
@@ -354,6 +373,7 @@
                   <option value="hg19">hg19</option>
                   <option value="GRCm38">GRCm38</option>
                   <option value="mm10">mm10</option>
+                  <option value="custom">custom</option>
                   <option value="WBcel235">WBcel235</option>
                   <option value="ce10">ce10</option>
                   <option value="CanFam3.1">CanFam3.1</option>
@@ -388,6 +408,22 @@
                   <option value="sacCer3">sacCer3</option>
                   <option value="susScr3">susScr3</option>
                 </select>
+        </div>
+      </div>
+      <div class="row param-docs-row border-bottom align-items-center genomeoption"> 
+          <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+        <label for="fasta">genome fasta</label>
+          </div>
+          <div class="col me-auto">
+              <input id="fasta" name="fasta" class='hicarinput'>
+        </div>
+      </div>
+      <div class="row param-docs-row border-bottom align-items-center genomeoption"> 
+          <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+        <label for="gtf">annotation gtf</label>
+          </div>
+          <div class="col me-auto">
+              <input id="gtf" name="gtf" class='hicarinput'>
         </div>
       </div>
       
@@ -428,7 +464,9 @@
          <div class="col me-auto">
                 <input type="text" id="cutadapt_5end" name="cutadapt_5end" value="^TAC" class='hicarinput'>
          </div>
+         <br/>
          <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+             <label>&nbsp;</label>
          </div>
          <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
              <label for="cutadapt_validate">Validate by one R1 reads</label>
@@ -437,25 +475,20 @@
                 <input id="fastq_r1" name="fastq_r1" type="file"/>
          </div>
          <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+             <label>&nbsp;</label>
          </div>
          <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
              <label for="cutadapt_action">Action</label>
-         </div>
-         <div class="col me-auto">
-                <select id="cutadapt_action" name="cutadapt_action" class='hicarinput'>
+             <select id="cutadapt_action" name="cutadapt_action" class='hicarinput'>
                   <option value="none" selected>none</option>
                   <option value="trim">trim</option>
                   <option value="retain">retain</option>
                   <option value="mask">mask</option>
                 </select>
          </div>
-         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
-         </div>
-         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
-             <label for="cutadapt_error_tolerance">Error tolerance</label>
-         </div>
          <div class="col me-auto">
-                <input id="cutadapt_error_tolerance" name="cutadapt_error_tolerance" type="text" value="0.15" required number>
+             <label for="cutadapt_error_tolerance">Error tolerance</label>
+             <input id="cutadapt_error_tolerance" name="cutadapt_error_tolerance" type="text" value="0.15" required number>
          </div>
       </div>
       
