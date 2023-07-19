@@ -56,6 +56,8 @@
         if(!$("#skip_cutadapt").is(':checked')){
           if($("#cutadapt_5end").val()!=""){
             cmd += " --cutadapt_5end \"" + $("#cutadapt_5end").val() + "\"";
+            cmd += " --cutadapt_error_tolerance " + $("#cutadapt_error_tolerance").val();
+            cmd += " --cutadapt_action " + $("#cutadapt_action").val();
           }else{
             cmd += " --skip_cutadapt";
           }
@@ -275,7 +277,6 @@
               <select id="version" name="version" class='hicarinput'>
                   <option value="dev2" selected>dev2</option>
                   <option value="dev">dev</option>
-                  <option value="1.0.0">release 1.0.0</option>
               </select>
           </div>
       </div>
@@ -427,12 +428,34 @@
          <div class="col me-auto">
                 <input type="text" id="cutadapt_5end" name="cutadapt_5end" value="^TAC" class='hicarinput'>
          </div>
-         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"></div>
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+         </div>
          <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
              <label for="cutadapt_validate">Validate by one R1 reads</label>
          </div>
          <div class="col me-auto">
                 <input id="fastq_r1" name="fastq_r1" type="file"/>
+         </div>
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+         </div>
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+             <label for="cutadapt_action">Action</label>
+         </div>
+         <div class="col me-auto">
+                <select id="cutadapt_action" name="cutadapt_action" class='hicarinput'>
+                  <option value="none" selected>none</option>
+                  <option value="trim">trim</option>
+                  <option value="retain">retain</option>
+                  <option value="mask">mask</option>
+                </select>
+         </div>
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+         </div>
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+             <label for="cutadapt_error_tolerance">Error tolerance</label>
+         </div>
+         <div class="col me-auto">
+                <input id="cutadapt_error_tolerance" name="cutadapt_error_tolerance" type="text" value="0.15" required number>
          </div>
       </div>
       
