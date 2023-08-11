@@ -1,0 +1,803 @@
+<div class="row flex-wrap-reverse flex-lg-wrap ms-lg-5"><div class="col-12 col-lg-9"><div class="rendered-markdown pipeline-page-content"><div class="param-docs">
+    <h1 id="parameters" class="">
+      Parameters
+    </h1>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
+      <div class="col-12 param-docs-row-id-col"><h2 id="inputoutput-options" class=""><i class="fas fa-terminal fa-fw"></i> Input/output options</h2></div>
+      <div class="col me-auto"><div id="input_output_options-body" class="param-docs-body lead mb-3"><p>Define where the pipeline should find input data and save output data.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="input" class=""><i class="fas fa-file-csv fa-fw"></i> <code>--input</code></h3></div>
+      <div class="col me-auto"><div id="--input-body" class="param-docs-body small"><p>Path to comma-separated file containing information about the samples in the experiment.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--input-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-warning text-dark small ms-2">required</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--input-help">
+          <p>You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row. See <a href="https://nf-co.re/hicar/usage#samplesheet-input">usage docs</a>.</p><code class="text-small"><span class="text-muted">pattern: </span>^\S+\.csv$</code></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="method" class=""><i class="fas fa-atom fa-fw"></i> <code>--method</code></h3></div>
+      <div class="col me-auto"><div id="--method-body" class="param-docs-body small"><p>Metho for the experiment.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'HiCAR'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--method-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--method-help">
+          <p>It can be HiCAR, HiChIP, ChIA-PET, PLAC-Seq. If it is not HiCAR, user may want to define the anchor peaks. Otherwise, the anchor peaks will be called by R2 reads.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="anchor_peaks" class=""><i class="fab fa-think-peaks fa-fw"></i> <code>--anchor_peaks</code></h3></div>
+      <div class="col me-auto"><div id="--anchor_peaks-body" class="param-docs-body small"><p>Path to anchor peaks</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--anchor_peaks-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--anchor_peaks-help">
+          <p>The anchor peaks can be a narrowPeak or broadPeak.</p><code class="text-small"><span class="text-muted">pattern: </span>^\S+\.(narrowPeak|boradPeak)$</code></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="outdir" class=""><i class="fas fa-folder-open fa-fw"></i> <code>--outdir</code></h3></div>
+      <div class="col me-auto"><div id="--outdir-body" class="param-docs-body small"><p>The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-warning text-dark small ms-2">required</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="email" class=""><i class="fas fa-envelope fa-fw"></i> <code>--email</code></h3></div>
+      <div class="col me-auto"><div id="--email-body" class="param-docs-body small"><p>Email address for completion summary.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--email-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--email-help">
+          <p>Set this parameter to your e-mail address to get a summary e-mail with details of the run sent to you when the workflow exits. If set in your user config file (<code>~/.nextflow/config</code>) then you don't need to specify this on the command line for every run.</p><code class="text-small"><span class="text-muted">pattern: </span>^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$</code></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="multiqc_title" class=""><i class="fas fa-file-signature fa-fw"></i> <code>--multiqc_title</code></h3></div>
+      <div class="col me-auto"><div id="--multiqc_title-body" class="param-docs-body small"><p>MultiQC report title. Printed as page header, used for filename if not otherwise specified.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
+      <div class="col-12 param-docs-row-id-col"><h2 id="reference-genome-options" class=""><i class="fas fa-dna fa-fw"></i> Reference genome options</h2></div>
+      <div class="col me-auto"><div id="reference_genome_options-body" class="param-docs-body lead mb-3"><p>Reference genome related files and options required for the workflow.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="genome" class=""><i class="fas fa-book fa-fw"></i> <code>--genome</code></h3></div>
+      <div class="col me-auto"><div id="--genome-body" class="param-docs-body small"><p>Name of iGenomes reference.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--genome-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--genome-help">
+          <p>If using a reference genome configured in the pipeline using iGenomes, use this parameter to give the ID for the reference. This is then used to build the full paths for all required reference genome files e.g. <code><span class="text-nowrap">--genome</span> GRCh38</code>. </p>
+<p>See the <a href="https://nf-co.re/usage/reference_genomes">nf-core website docs</a> for more details.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="fasta" class=""><i class="far fa-file-code fa-fw"></i> <code>--fasta</code></h3></div>
+      <div class="col me-auto"><div id="--fasta-body" class="param-docs-body small"><p>Path to FASTA genome file.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--fasta-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--fasta-help">
+          <p>This parameter is <em>mandatory</em> if <code><span class="text-nowrap">--genome</span></code> is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with <code><span class="text-nowrap">--save_reference</span></code> to save BWA index for future runs.</p><code class="text-small"><span class="text-muted">pattern: </span>^\S+\.fn?a(sta)?(\.gz)?$</code></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="igenomes_base" class="toc-hidden"><i class="fas fa-cloud-download-alt fa-fw"></i> <code>--igenomes_base</code></h3></div>
+      <div class="col me-auto"><div id="--igenomes_base-body" class="param-docs-body small"><p>Directory / URL base for iGenomes references.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'s3://ngi-igenomes/igenomes'</code><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="igenomes_ignore" class="toc-hidden"><i class="fas fa-ban fa-fw"></i> <code>--igenomes_ignore</code></h3></div>
+      <div class="col me-auto"><div id="--igenomes_ignore-body" class="param-docs-body small"><p>Do not load the iGenomes reference config.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--igenomes_ignore-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--igenomes_ignore-help">
+          <p>Do not load <code>igenomes.config</code> when running the pipeline. You may choose this option if you observe clashes between custom parameters and those supplied in <code>igenomes.config</code>.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="bwa_index" class=""><i class="fab fa-wpexplorer fa-fw"></i> <code>--bwa_index</code></h3></div>
+      <div class="col me-auto"><div id="--bwa_index-body" class="param-docs-body small"><p>Path to bwa index file.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--bwa_index-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--bwa_index-help">
+          <p>If you have no genome reference available, the pipeline can build one using a FASTA file. This requires additional time and resources, so it's better to use a pre-build index if possible.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="gtf" class=""><i class="fas fa-map-marked-alt fa-fw"></i> <code>--gtf</code></h3></div>
+      <div class="col me-auto"><div id="--gtf-body" class="param-docs-body small"><p>Path to annotation gtf file.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--gtf-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--gtf-help">
+          <p>Annotation gtf or gff file is required for annotation and quality control. This parameter is <em>mandatory</em> if <code><span class="text-nowrap">--genome</span></code> is not specified.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="gff" class=""><i class="fas fa-map-marked-alt fa-fw"></i> <code>--gff</code></h3></div>
+      <div class="col me-auto"><div id="--gff-body" class="param-docs-body small"><p>Path to annotation gff file.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--gff-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--gff-help">
+          <p>Annotation gff or gff file is required for annotation and quality control. This parameter is <em>mandatory</em> if <code><span class="text-nowrap">--genome</span></code> is not specified.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="gene_bed" class=""><i class="fas fa-file-medical-alt fa-fw"></i> <code>--gene_bed</code></h3></div>
+      <div class="col me-auto"><div id="--gene_bed-body" class="param-docs-body small"><p>Path to annotation gene bed file.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--gene_bed-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--gene_bed-help">
+          <p>Path to BED file containing gene intervals. This will be created from the GTF file if not specified.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="mappability" class=""><i class="fas fa-file-contract fa-fw"></i> <code>--mappability</code></h3></div>
+      <div class="col me-auto"><div id="--mappability-body" class="param-docs-body small"><p>Path to genome mappability file.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--mappability-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--mappability-help">
+          <p>If you have no genome mappability available, the pipeline can build one using a FASTA file. This requires additional time and resources, so it's better to use a pre-build index if possible.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="macs_gsize" class=""><i class="fas fa-arrows-alt-h fa-fw"></i> <code>--macs_gsize</code></h3></div>
+      <div class="col me-auto"><div id="--macs_gsize-body" class="param-docs-body small"><p>Effective genome size parameter required by MACS2.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--macs_gsize-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--macs_gsize-help">
+          <p><a href="https://github.com/taoliu/MACS#-g--gsize">Effective genome size</a> parameter required by MACS2. If using an iGenomes reference these have been provided when <code><span class="text-nowrap">--genome</span></code> is set as <em>GRCh37</em>, <em>GRCh38</em>, <em>GRCm38</em>, <em>WBcel235</em>, <em>BDGP6</em>, <em>R64-1-1</em>, <em>EF2</em>, <em>hg38</em>, <em>hg19</em> and <em>mm10</em>. For other genomes, if this parameter is not specified then the MACS2 peak-calling and differential analysis will be skipped.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="ucscname" class=""><i class="fas fa-water fa-fw"></i> <code>--ucscname</code></h3></div>
+      <div class="col me-auto"><div id="--ucscname-body" class="param-docs-body small"><p>UCSC assembly annotation name.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--ucscname-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--ucscname-help">
+          <p><a href="https://genome.ucsc.edu/FAQ/FAQgenes.html">UCSC assembly annotation name</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="blacklist" class=""><i class="fas fa-book-dead fa-fw"></i> <code>--blacklist</code></h3></div>
+      <div class="col me-auto"><div id="--blacklist-body" class="param-docs-body small"><p>Path to blacklist regions in BED format, used for filtering alignments.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--blacklist-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--blacklist-help">
+          <p>If provided, alignments that overlap with the regions in this file will be filtered out (see <a href="https://sites.google.com/site/anshulkundaje/projects/blacklists">ENCODE blacklists</a>). The file should be in BED format. Blacklisted regions for <em>GRCh37</em>, <em>GRCh38</em>, <em>GRCm38</em>, <em>hg19</em>, <em>hg38</em>, <em>mm10</em> are bundled with the pipeline in the <a href="http://jianhongs-mbp.dhe.duke.edu:8888/hicar/assets/blacklists/"><code>blacklists</code></a> directory, and as such will be automatically used if any of those genomes are specified with the <code><span class="text-nowrap">--genome</span></code> parameter.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
+      <div class="col-12 param-docs-row-id-col"><h2 id="experiment-design-options" class=""><i class="fas fa-vials fa-fw"></i> Experiment design options</h2></div>
+      <div class="col me-auto"><div id="experiment_config_options-body" class="param-docs-body lead mb-3"><p>Parameters used to describe the experiment designs.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="enzyme" class=""><i class="fas fa-vial fa-fw"></i> <code>--enzyme</code></h3></div>
+      <div class="col me-auto"><div id="--enzyme-body" class="param-docs-body small"><p>Specifies that the cutting position has to be using.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'CviQI'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--enzyme-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--enzyme-help">
+          <p>Default CviQI digestion. Available enzymes are MboI, DpnII, BglII, HindIII, and CviQI.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="restriction_sites" class="toc-hidden"><i class="fas fa-cut fa-fw"></i> <code>--restriction_sites</code></h3></div>
+      <div class="col me-auto"><div id="--restriction_sites-body" class="param-docs-body small"><p>Specifies that the cutting sequence has to be using.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'^TAC'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--restriction_sites-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--restriction_sites-help">
+          <p>It will be automatically assigned by the enzyme inputed.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="restriction_sites_cut_off" class=""><i class="fas fa-ruler-horizontal fa-fw"></i> <code>--restriction_sites_cut_off</code></h3></div>
+      <div class="col me-auto"><div id="--restriction_sites_cut_off-body" class="param-docs-body small"><p>Specifies that the cutoff value used for mappability filter.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>0.5</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--restriction_sites_cut_off-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--restriction_sites_cut_off-help">
+          <p>Default is 0.5. It is the average over just covered bases.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
+      <div class="col-12 param-docs-row-id-col"><h2 id="macs2-peak-calling-options" class=""><i class="fas fa-mountains fa-fw"></i> MACS2 peak calling options</h2></div>
+      <div class="col me-auto"><div id="MACS2_peak_calling_options-body" class="param-docs-body lead mb-3"></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="shiftsize" class=""><i class="fas fa-arrows-alt-h fa-fw"></i> <code>--shiftsize</code></h3></div>
+      <div class="col me-auto"><div id="--shiftsize-body" class="param-docs-body small"><p>shift size for MACS2</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>-75</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--shiftsize-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--shiftsize-help">
+          <p>How reads will be shift to increase the peak/noise ratios. See help from <a href="https://github.com/macs3-project/MACS/blob/master/docs/callpeak.md">MACS2 documentation</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="smooth_window" class=""><i class="fas fa-compress fa-fw"></i> <code>--smooth_window</code></h3></div>
+      <div class="col me-auto"><div id="--smooth_window-body" class="param-docs-body small"><p>extsize for MACS2</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>150</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--smooth_window-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--smooth_window-help">
+          <p>How reads will be extend in 5'-&gt;3' direction to increase the fragment size. See help from <a href="https://github.com/macs3-project/MACS/blob/master/docs/callpeak.md">MACS2 documentation</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="qval_thresh" class=""><i class="fas fa-filter fa-fw"></i> <code>--qval_thresh</code></h3></div>
+      <div class="col me-auto"><div id="--qval_thresh-body" class="param-docs-body small"><p>cutoff qvalue</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>0.01</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--qval_thresh-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--qval_thresh-help">
+          <p>The minimum FDR cutoff to call significant peak for R2 reads. See help from <a href="https://github.com/macs3-project/MACS/blob/master/docs/callpeak.md">MACS2 documentation</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="high_resolution_r1" class=""><i class="fas fa-mountain fa-fw"></i> <code>--high_resolution_R1</code></h3></div>
+      <div class="col me-auto"><div id="--high_resolution_R1-body" class="param-docs-body small"><p>read peak calling for fragment (R1) reads by MACS2</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="r1_pval_thresh" class=""><i class="fas fa-filter fa-fw"></i> <code>--r1_pval_thresh</code></h3></div>
+      <div class="col me-auto"><div id="--r1_pval_thresh-body" class="param-docs-body small"><p>cutoff pvalue for fragment (R1)</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>0.1</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--r1_pval_thresh-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--r1_pval_thresh-help">
+          <p>The minimum FDR cutoff to call significant peak for R1 reads. R1 reads will be more noisy compare to R2 reads. Here we need a loose cutoff. And this will be fixed in the following steps. See help from <a href="https://github.com/macs3-project/MACS/blob/master/docs/callpeak.md">MACS2 documentation</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
+      <div class="col-12 param-docs-row-id-col"><h2 id="maps-peak-calling-options" class=""><i class="fab fa-connectdevelop fa-fw"></i> MAPS peak calling options</h2></div>
+      <div class="col me-auto"><div id="MAPS_peak_calling_options-body" class="param-docs-body lead mb-3"></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="cool_bin" class=""><i class="fas fa-layer-group fa-fw"></i> <code>--cool_bin</code></h3></div>
+      <div class="col me-auto"><div id="--cool_bin-body" class="param-docs-body small"><p>resolution bin size</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'5000_10000'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--cool_bin-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--cool_bin-help">
+          <p>Bin size for singal resampling.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="maps_digest_file" class=""><i class="fas fa-stream fa-fw"></i> <code>--maps_digest_file</code></h3></div>
+      <div class="col me-auto"><div id="--maps_digest_file-body" class="param-docs-body small"><p>output of restriction_cut_multipleenzyme.py.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'None'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--maps_digest_file-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--maps_digest_file-help">
+          <p>See <a href="https://github.com/ijuric/MAPS/blob/master/bin/utils/genomic_features_generator/scripts/restriction_cut_multipleenzyme.py">https://github.com/ijuric/MAPS/blob/master/bin/utils/genomic_features_generator/scripts/restriction_cut_multipleenzyme.py</a>.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="maps_cutoff_counts" class=""><i class="fas fa-filter fa-fw"></i> <code>--maps_cutoff_counts</code></h3></div>
+      <div class="col me-auto"><div id="--maps_cutoff_counts-body" class="param-docs-body small"><p>MAPS regression cutoff value</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>12</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--maps_cutoff_counts-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--maps_cutoff_counts-help">
+          <p>Minimal cutoff value for coverage in the called connections. See help from <a href="https://github.com/ijuric/MAPS">MAPS documentation</a>, default 12.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="maps_cutoff_fold_change" class=""><i class="fas fa-check-double fa-fw"></i> <code>--maps_cutoff_fold_change</code></h3></div>
+      <div class="col me-auto"><div id="--maps_cutoff_fold_change-body" class="param-docs-body small"><p>MAPS regression fold change cutoff value</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>2</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--maps_cutoff_fold_change-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--maps_cutoff_fold_change-help">
+          <p>Miniaml cutoff value for fold change from signal to expected values. See help from <a href="https://github.com/ijuric/MAPS">MAPS documentation</a>, default 2.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="maps_cutoff_fdr" class=""><i class="fas fa-percent fa-fw"></i> <code>--maps_cutoff_fdr</code></h3></div>
+      <div class="col me-auto"><div id="--maps_cutoff_fdr-body" class="param-docs-body small"><p>MAPS regression -log10(fdr) cutoff value</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>2</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--maps_cutoff_fdr-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--maps_cutoff_fdr-help">
+          <p>Minimal cutoff -log10(FDR) value in the called connections. See help from <a href="https://github.com/ijuric/MAPS">MAPS documentation</a>, default 2 (=fdr 0.05).</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="maps_filter" class=""><i class="fas fa-clipboard fa-fw"></i> <code>--maps_filter</code></h3></div>
+      <div class="col me-auto"><div id="--maps_filter-body" class="param-docs-body small"><p>MAPS regression filter file name</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'None'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--maps_filter-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--maps_filter-help">
+          <p>file containing bins that need to be filtered out. Format: two columns 'chrom', 'bin'. 'chrom' contains 'chr1','chr2',.. 'bin' is bin label</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="maps_model" class=""><i class="fas fa-cogs fa-fw"></i> <code>--maps_model</code></h3></div>
+      <div class="col me-auto"><div id="--maps_model-body" class="param-docs-body small"><p>MAPS regression type</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="btn-group">
+                      <button type="button" class="btn btn-light border-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options: <code class="text-small">'pospoisson'</code> (default)</button>
+                    <div class="dropdown-menu"><a class="dropdown-item"><code class="text-small">'pospoisson' (default)</code></a><a class="dropdown-item"><code class="text-small">'negbinom'</code></a></div></div><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--maps_model-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--maps_model-help">
+          <p>pospoisson for positive poisson regression, negbinom for negative binomial. default is pospoisson.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="merge_map_py_source" class="toc-hidden"><i class="fab fa-github fa-fw"></i> <code>--merge_map_py_source</code></h3></div>
+      <div class="col me-auto"><div id="--merge_map_py_source-body" class="param-docs-body small"><p>source code path for merge_map.py</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'https://raw.githubusercontent.com/ijuric/MAPS/91c9c360092b25a217d91b9ea07eba5dd2ac72f4/bin/utils/genomic_features_generator/scripts/merge_map.py'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--merge_map_py_source-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--merge_map_py_source-help">
+          <p>The source code is available at <a href="https://github.com/ijuric/MAPS/blob/master/bin/utils/genomic_features_generator/scripts/merge_map.py">https://github.com/ijuric/MAPS/blob/master/bin/utils/genomic_features_generator/scripts/merge_map.py</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="feature_frag2bin_source" class="toc-hidden"><i class="fab fa-github fa-fw"></i> <code>--feature_frag2bin_source</code></h3></div>
+      <div class="col me-auto"><div id="--feature_frag2bin_source-body" class="param-docs-body small"><p>feature_frag2bin source path</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'https://raw.githubusercontent.com/ijuric/MAPS/91c9c360092b25a217d91b9ea07eba5dd2ac72f4/bin/utils/genomic_features_generator/scripts/feature_frag2bin.py'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--feature_frag2bin_source-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--feature_frag2bin_source-help">
+          <p>The source code is available at <a href="https://github.com/ijuric/MAPS/blob/master/bin/utils/genomic_features_generator/scripts/feature_frag2bin.py">https://github.com/ijuric/MAPS/blob/master/bin/utils/genomic_features_generator/scripts/feature_frag2bin.py</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="make_maps_runfile_source" class="toc-hidden"><i class="fab fa-github fa-fw"></i> <code>--make_maps_runfile_source</code></h3></div>
+      <div class="col me-auto"><div id="--make_maps_runfile_source-body" class="param-docs-body small"><p>make_maps_runfile source path</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'https://raw.githubusercontent.com/ijuric/MAPS/18c1a337f222130d7c5735d051614e2a253d5319/bin/MAPS/make_maps_runfile.py'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--make_maps_runfile_source-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--make_maps_runfile_source-help">
+          <p>The source code is available at <a href="https://github.com/ijuric/MAPS/blob/master/bin/MAPS/make_maps_runfile.py">https://github.com/ijuric/MAPS/blob/master/bin/MAPS/make_maps_runfile.py</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="remove_dup" class="toc-hidden"><i class="fas fa-mountain fa-fw"></i> <code>--remove_dup</code></h3></div>
+      <div class="col me-auto"><div id="--remove_dup-body" class="param-docs-body small"><p>remove duplicates for high resolution peaks or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="snow_type" class=""><i class="fas fa-network-wired fa-fw"></i> <code>--snow_type</code></h3></div>
+      <div class="col me-auto"><div id="--snow_type-body" class="param-docs-body small"><p>Type of snow cluster to use</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'SOCK'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--snow_type-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--snow_type-help">
+          <p>Possible values are 'SOCK' (default), 'MPI' and 'FORK'. This will be used by snow package for HiPeak calling</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="peak_pair_block" class="toc-hidden"><i class="fas fa-th fa-fw"></i> <code>--peak_pair_block</code></h3></div>
+      <div class="col me-auto"><div id="--peak_pair_block-body" class="param-docs-body small"><p>The block number of peak pair</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>1000000000</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--peak_pair_block-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--peak_pair_block-help">
+          <p>The block number of peak pair in each thread to count the reads. Smaller number will decrease the memory cost and increase the computation time for parepare the counts in hipeak calling.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
+      <div class="col-12 param-docs-row-id-col"><h2 id="options-related-to-tracks-juicer_tools-and-circos" class=""><i class="fab fa-wpforms fa-fw"></i> Options related to tracks, juicer_tools, and circos</h2></div>
+      <div class="col me-auto"><div id="Visualization_options-body" class="param-docs-body lead mb-3"><p>Options for tracks viewed by igv, ucsc genome browser and virtual 4c plot tools</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="virtual_4c" class=""><i class="fas fa-align-left fa-fw"></i> <code>--virtual_4c</code></h3></div>
+      <div class="col me-auto"><div id="--virtual_4c-body" class="param-docs-body small"><p>create track files for virtual 4c or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="v4c_max_events" class=""><i class="fas fa-water fa-fw"></i> <code>--v4c_max_events</code></h3></div>
+      <div class="col me-auto"><div id="--v4c_max_events-body" class="param-docs-body small"><p>max events to plot for virtual 4c</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>25</code></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="juicer_jvm_params" class=""><i class="far fa-clock fa-fw"></i> <code>--juicer_jvm_params</code></h3></div>
+      <div class="col me-auto"><div id="--juicer_jvm_params-body" class="param-docs-body small"><p>JVM heap parameters for juicer</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'-Xms512m -Xmx4096m'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--juicer_jvm_params-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--juicer_jvm_params-help">
+          <p>For 64bit system, you may want to set the Xmx &gt; 4g, eg. '-Xms1024m -Xmx32g'</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="juicer_tools_jar" class=""><i class="far fa-java fa-fw"></i> <code>--juicer_tools_jar</code></h3></div>
+      <div class="col me-auto"><div id="--juicer_tools_jar-body" class="param-docs-body small"><p>The juicer_tools path</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'https://s3.amazonaws.com/hicfiles.tc4ga.com/public/juicer/juicer_tools_1.22.01.jar'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--juicer_tools_jar-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--juicer_tools_jar-help">
+          <p>The juicer_tools can be downloaded from <a href="https://github.com/aidenlab/juicer/wiki/Download">juicer_tools download page</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group param-docs-hidden collapse d-print-block">
+      <div class="col-12 param-docs-row-id-col"><h2 id="other-options-not-expose" class="toc-hidden"><i class="fas fa-ban fa-fw"></i> Other options not expose</h2></div>
+      <div class="col me-auto"><div id="Other_options_not_expose_yet-body" class="param-docs-body lead mb-3"></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_peak_qc" class="toc-hidden"><i class="fas fa-ban fa-fw"></i> <code>--skip_peak_qc</code></h3></div>
+      <div class="col me-auto"><div id="--skip_peak_qc-body" class="param-docs-body small"><p>skip peak QC or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_plot_profile" class="toc-hidden"><i class="fas fa-ban fa-fw"></i> <code>--skip_plot_profile</code></h3></div>
+      <div class="col me-auto"><div id="--skip_plot_profile-body" class="param-docs-body small"><p>skip plot profile or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_igv" class="toc-hidden"><i class="fas fa-ban fa-fw"></i> <code>--skip_igv</code></h3></div>
+      <div class="col me-auto"><div id="--skip_igv-body" class="param-docs-body small"><p>skip creat IGV files or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_trackhub" class="toc-hidden"><i class="fas fa-ban fa-fw"></i> <code>--skip_trackhub</code></h3></div>
+      <div class="col me-auto"><div id="--skip_trackhub-body" class="param-docs-body small"><p>skip create trackhub files or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="enrichment_fdr" class="toc-hidden"><i class="fas fa-ban fa-fw"></i> <code>--enrichment_fdr</code></h3></div>
+      <div class="col me-auto"><div id="--enrichment_fdr-body" class="param-docs-body small"><p>cutoff value for false discovery rate of enrichment analysis</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group param-docs-hidden collapse d-print-block">
+      <div class="col-12 param-docs-row-id-col"><h2 id="institutional-config-options" class="toc-hidden"><i class="fas fa-university fa-fw"></i> Institutional config options</h2></div>
+      <div class="col me-auto"><div id="institutional_config_options-body" class="param-docs-body lead mb-3"><p>Parameters used to describe centralised config profiles. These should not be edited.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#institutional_config_options-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="institutional_config_options-help">
+          <p>The centralised nf-core configuration profiles use a handful of pipeline parameters to describe themselves. This information is then printed to the Nextflow log when you run a pipeline. You should not need to change these values when you run a pipeline.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="custom_config_version" class="toc-hidden"><i class="fas fa-users-cog fa-fw"></i> <code>--custom_config_version</code></h3></div>
+      <div class="col me-auto"><div id="--custom_config_version-body" class="param-docs-body small"><p>Git commit id for Institutional configs.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'master'</code><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="custom_config_base" class="toc-hidden"><i class="fas fa-users-cog fa-fw"></i> <code>--custom_config_base</code></h3></div>
+      <div class="col me-auto"><div id="--custom_config_base-body" class="param-docs-body small"><p>Base directory for Institutional configs.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'https://raw.githubusercontent.com/nf-core/configs/master'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--custom_config_base-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--custom_config_base-help">
+          <p>If you're running offline, Nextflow will not be able to fetch the institutional config files from the internet. If you don't need them, then this is not a problem. If you do need them, you should download the files from the repo and tell Nextflow where to find them with this parameter.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="config_profile_name" class="toc-hidden"><i class="fas fa-users-cog fa-fw"></i> <code>--config_profile_name</code></h3></div>
+      <div class="col me-auto"><div id="--config_profile_name-body" class="param-docs-body small"><p>Institutional config name.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="config_profile_description" class="toc-hidden"><i class="fas fa-users-cog fa-fw"></i> <code>--config_profile_description</code></h3></div>
+      <div class="col me-auto"><div id="--config_profile_description-body" class="param-docs-body small"><p>Institutional config description.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="config_profile_contact" class="toc-hidden"><i class="fas fa-users-cog fa-fw"></i> <code>--config_profile_contact</code></h3></div>
+      <div class="col me-auto"><div id="--config_profile_contact-body" class="param-docs-body small"><p>Institutional config contact information.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="config_profile_url" class="toc-hidden"><i class="fas fa-users-cog fa-fw"></i> <code>--config_profile_url</code></h3></div>
+      <div class="col me-auto"><div id="--config_profile_url-body" class="param-docs-body small"><p>Institutional config URL link.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group param-docs-hidden collapse d-print-block">
+      <div class="col-12 param-docs-row-id-col"><h2 id="max-job-request-options" class="toc-hidden"><i class="fab fa-acquisitions-incorporated fa-fw"></i> Max job request options</h2></div>
+      <div class="col me-auto"><div id="max_job_request_options-body" class="param-docs-body lead mb-3"><p>Set the top limit for requested resources for any single job.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#max_job_request_options-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="max_job_request_options-help">
+          <p>If you are running on a smaller system, a pipeline step requesting more resources than are available may cause the Nextflow to stop the run with an error. These options allow you to cap the maximum resources requested by any single job so that the pipeline will run on your system.</p>
+<p>Note that you can not <em>increase</em> the resources requested by any job using these options. For that you will need your own configuration file. See <a href="https://nf-co.re/usage/configuration">the nf-core website</a> for details.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="max_cpus" class="toc-hidden"><i class="fas fa-microchip fa-fw"></i> <code>--max_cpus</code></h3></div>
+      <div class="col me-auto"><div id="--max_cpus-body" class="param-docs-body small"><p>Maximum number of CPUs that can be requested for any single job.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>16</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--max_cpus-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--max_cpus-help">
+          <p>Use to set an upper-limit for the CPU requirement for each process. Should be an integer e.g. <code><span class="text-nowrap">--max_cpus</span> 1</code></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="max_memory" class="toc-hidden"><i class="fas fa-memory fa-fw"></i> <code>--max_memory</code></h3></div>
+      <div class="col me-auto"><div id="--max_memory-body" class="param-docs-body small"><p>Maximum amount of memory that can be requested for any single job.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'128.GB'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--max_memory-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--max_memory-help">
+          <p>Use to set an upper-limit for the memory requirement for each process. Should be a string in the format integer-unit e.g. <code><span class="text-nowrap">--max_memory</span> '8.GB'</code></p><code class="text-small"><span class="text-muted">pattern: </span>^\d+(\.\d+)?\.?\s*(K|M|G|T)?B$</code></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="max_time" class="toc-hidden"><i class="far fa-clock fa-fw"></i> <code>--max_time</code></h3></div>
+      <div class="col me-auto"><div id="--max_time-body" class="param-docs-body small"><p>Maximum amount of time that can be requested for any single job.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'240.h'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--max_time-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--max_time-help">
+          <p>Use to set an upper-limit for the time requirement for each process. Should be a string in the format integer-unit e.g. <code><span class="text-nowrap">--max_time</span> '2.h'</code></p><code class="text-small"><span class="text-muted">pattern: </span>^(\d+\.?\s*(s|m|h|day)\s*)+$</code></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group param-docs-hidden collapse d-print-block">
+      <div class="col-12 param-docs-row-id-col"><h2 id="generic-options" class="toc-hidden"><i class="fas fa-file-import fa-fw"></i> Generic options</h2></div>
+      <div class="col me-auto"><div id="generic_options-body" class="param-docs-body lead mb-3"><p>Less common options for the pipeline, typically set in a config file.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#generic_options-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="generic_options-help">
+          <p>These options are common to all nf-core pipelines and allow you to customise some of the core preferences for how the pipeline runs.</p>
+<p>Typically these options would be set in a Nextflow config file loaded for all pipeline runs, such as <code>~/.nextflow/config</code>.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="help" class="toc-hidden"><i class="fas fa-question-circle fa-fw"></i> <code>--help</code></h3></div>
+      <div class="col me-auto"><div id="--help-body" class="param-docs-body small"><p>Display help text.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="publish_dir_mode" class="toc-hidden"><i class="fas fa-copy fa-fw"></i> <code>--publish_dir_mode</code></h3></div>
+      <div class="col me-auto"><div id="--publish_dir_mode-body" class="param-docs-body small"><p>Method used to save pipeline results to output directory.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="btn-group">
+                      <button type="button" class="btn btn-light border-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options: <code class="text-small">'copy'</code> (default)</button>
+                    <div class="dropdown-menu"><a class="dropdown-item"><code class="text-small">'symlink'</code></a><a class="dropdown-item"><code class="text-small">'rellink'</code></a><a class="dropdown-item"><code class="text-small">'link'</code></a><a class="dropdown-item"><code class="text-small">'copy' (default)</code></a><a class="dropdown-item"><code class="text-small">'copyNoFollow'</code></a><a class="dropdown-item"><code class="text-small">'move'</code></a></div></div><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--publish_dir_mode-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--publish_dir_mode-help">
+          <p>The Nextflow <code>publishDir</code> option specifies which intermediate files should be saved to the output directory. This option tells the pipeline what method should be used to move these files. See <a href="https://www.nextflow.io/docs/latest/process.html#publishdir">Nextflow docs</a> for details.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="email_on_fail" class="toc-hidden"><i class="fas fa-exclamation-triangle fa-fw"></i> <code>--email_on_fail</code></h3></div>
+      <div class="col me-auto"><div id="--email_on_fail-body" class="param-docs-body small"><p>Email address for completion summary, only when pipeline fails.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--email_on_fail-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--email_on_fail-help">
+          <p>An email address to send a summary email to when the pipeline is completed - ONLY sent if the pipeline does not exit successfully.</p><code class="text-small"><span class="text-muted">pattern: </span>^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$</code></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="plaintext_email" class="toc-hidden"><i class="fas fa-remove-format fa-fw"></i> <code>--plaintext_email</code></h3></div>
+      <div class="col me-auto"><div id="--plaintext_email-body" class="param-docs-body small"><p>Send plain-text email instead of HTML.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="max_multiqc_email_size" class="toc-hidden"><i class="fas fa-file-upload fa-fw"></i> <code>--max_multiqc_email_size</code></h3></div>
+      <div class="col me-auto"><div id="--max_multiqc_email_size-body" class="param-docs-body small"><p>File size limit when attaching MultiQC reports to summary emails.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'25.MB'</code><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="monochrome_logs" class="toc-hidden"><i class="fas fa-palette fa-fw"></i> <code>--monochrome_logs</code></h3></div>
+      <div class="col me-auto"><div id="--monochrome_logs-body" class="param-docs-body small"><p>Do not use coloured log outputs.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="multiqc_config" class="toc-hidden"><i class="fas fa-cog fa-fw"></i> <code>--multiqc_config</code></h3></div>
+      <div class="col me-auto"><div id="--multiqc_config-body" class="param-docs-body small"><p>Custom config file to supply to MultiQC.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="tracedir" class="toc-hidden"><i class="fas fa-cogs fa-fw"></i> <code>--tracedir</code></h3></div>
+      <div class="col me-auto"><div id="--tracedir-body" class="param-docs-body small"><p>Directory to keep pipeline Nextflow logs and reports.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'${params.outdir}/pipeline_info'</code><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="validate_params" class="toc-hidden"><i class="fas fa-check-square fa-fw"></i> <code>--validate_params</code></h3></div>
+      <div class="col me-auto"><div id="--validate_params-body" class="param-docs-body small"><p>Boolean whether to validate parameters against the schema at runtime</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>1</code><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="show_hidden_params" class="toc-hidden"><i class="far fa-eye-slash fa-fw"></i> <code>--show_hidden_params</code></h3></div>
+      <div class="col me-auto"><div id="--show_hidden_params-body" class="param-docs-body small"><p>Show all params when using <code><span class="text-nowrap">--help</span></code></p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--show_hidden_params-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--show_hidden_params-help">
+          <p>By default, parameters set as <em>hidden</em> in the schema are not shown on the command line when a user runs with <code><span class="text-nowrap">--help</span></code>. Specifying this option will tell the pipeline to show all parameters.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="enable_conda" class="toc-hidden"><i class="fas fa-bacon fa-fw"></i> <code>--enable_conda</code></h3></div>
+      <div class="col me-auto"><div id="--enable_conda-body" class="param-docs-body small"><p>Run this workflow with Conda. You can also use '-profile conda' instead of providing this parameter.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
+      <div class="col-12 param-docs-row-id-col"><h2 id="pipeline-controler" class=""><i class="fas fa-file-import fa-fw"></i> Pipeline controler</h2></div>
+      <div class="col me-auto"><div id="pipeline_controls-body" class="param-docs-body lead mb-3"><p>To skip some processes or workflows.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#pipeline_controls-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="pipeline_controls-help">
+          <p>These options allow you to customise some of the pipeline steps for how the pipeline runs.</p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_cutadapt" class=""><i class="fas fa-remove-format fa-fw"></i> <code>--skip_cutadapt</code></h3></div>
+      <div class="col me-auto"><div id="--skip_cutadapt-body" class="param-docs-body small"><p>skip trim 5'end TAC</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_fastqc" class=""><i class="fab fa-creative-commons-pd fa-fw"></i> <code>--skip_fastqc</code></h3></div>
+      <div class="col me-auto"><div id="--skip_fastqc-body" class="param-docs-body small"><p>skip fastqc or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_peak_annotation" class=""><i class="fas fa-comment-slash fa-fw"></i> <code>--skip_peak_annotation</code></h3></div>
+      <div class="col me-auto"><div id="--skip_peak_annotation-body" class="param-docs-body small"><p>skip peak annotation or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_enrichment" class=""><i class="fas fa-comment-slash fa-fw"></i> <code>--skip_enrichment</code></h3></div>
+      <div class="col me-auto"><div id="--skip_enrichment-body" class="param-docs-body small"><p>skip enrichment or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>1</code></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_diff_analysis" class=""><i class="fas fa-ban fa-fw"></i> <code>--skip_diff_analysis</code></h3></div>
+      <div class="col me-auto"><div id="--skip_diff_analysis-body" class="param-docs-body small"><p>skip differential analysis or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="skip_multiqc" class=""><i class="far fa-calendar-times fa-fw"></i> <code>--skip_multiqc</code></h3></div>
+      <div class="col me-auto"><div id="--skip_multiqc-body" class="param-docs-body small"><p>skip multiqc or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="alert border bg-light small hidden_params_alert collapse show">
+      <p>The following uncommon parameters have been hidden: <code>--igenomes_base</code>, <code>--igenomes_ignore</code>, <code>--restriction_sites</code>, <code>--merge_map_py_source</code>, <code>--feature_frag2bin_source</code>, <code>--make_maps_runfile_source</code>, <code>--remove_dup</code>, <code>--peak_pair_block</code>, <code>--skip_peak_qc</code>, <code>--skip_plot_profile</code>, <code>--skip_igv</code>, <code>--skip_trackhub</code>, <code>--enrichment_fdr</code>, <code>--custom_config_version</code>, <code>--custom_config_base</code>, <code>--config_profile_name</code>, <code>--config_profile_description</code>, <code>--config_profile_contact</code>, <code>--config_profile_url</code>, <code>--max_cpus</code>, <code>--max_memory</code>, <code>--max_time</code>, <code>--help</code>, <code>--publish_dir_mode</code>, <code>--email_on_fail</code>, <code>--plaintext_email</code>, <code>--max_multiqc_email_size</code>, <code>--monochrome_logs</code>, <code>--multiqc_config</code>, <code>--tracedir</code>, <code>--validate_params</code>, <code>--show_hidden_params</code>, <code>--enable_conda</code></p>
+      <p> to show all hidden params.</p>
+    </div></div></div></div><div class="col-12 col-lg-3 ps-2"><div class="side-sub-subnav sticky-top"><nav class="toc pt-2 auto-toc border-start d-print-none"><strong class="ms-3 d-inline-block w-100 text-secondary border-bottom">On this page</strong>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1" href="#parameters">Parameters</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1" href="#inputoutput-options"><i class="fas fa-terminal fa-fw"></i>Input/output options</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1 " href="#input"><i class="fas fa-file-csv fa-fw"></i><code>⁠-⁠-⁠input</code></a>
+<a class="nav-link scroll_to_link py-1" href="#method"><i class="fas fa-atom fa-fw"></i><code>⁠-⁠-⁠method</code></a>
+<a class="nav-link scroll_to_link py-1" href="#anchor_peaks"><i class="fab fa-think-peaks fa-fw"></i><code>⁠-⁠-⁠anchor_peaks</code></a>
+<a class="nav-link scroll_to_link py-1" href="#outdir"><i class="fas fa-folder-open fa-fw"></i><code>⁠-⁠-⁠outdir</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#email"><i class="fas fa-envelope fa-fw"></i><code>⁠-⁠-⁠email</code></a>
+<a class="nav-link scroll_to_link py-1" href="#multiqc_title"><i class="fas fa-file-signature fa-fw"></i><code>⁠-⁠-⁠multiqc_title</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1" href="#reference-genome-options"><i class="fas fa-dna fa-fw"></i>Reference genome options</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1" href="#genome"><i class="fas fa-book fa-fw"></i><code>⁠-⁠-⁠genome</code></a>
+<a class="nav-link scroll_to_link py-1" href="#fasta"><i class="far fa-file-code fa-fw"></i><code>⁠-⁠-⁠fasta</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#igenomes_base"><i class="fas fa-cloud-download-alt fa-fw"></i><code>⁠-⁠-⁠igenomes_base</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#igenomes_ignore"><i class="fas fa-ban fa-fw"></i><code>⁠-⁠-⁠igenomes_ignore</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#bwa_index"><i class="fab fa-wpexplorer fa-fw"></i><code>⁠-⁠-⁠bwa_index</code></a>
+<a class="nav-link scroll_to_link py-1" href="#gtf"><i class="fas fa-map-marked-alt fa-fw"></i><code>⁠-⁠-⁠gtf</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#gff"><i class="fas fa-map-marked-alt fa-fw"></i><code>⁠-⁠-⁠gff</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#gene_bed"><i class="fas fa-file-medical-alt fa-fw"></i><code>⁠-⁠-⁠gene_bed</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#mappability"><i class="fas fa-file-contract fa-fw"></i><code>⁠-⁠-⁠mappability</code></a>
+<a class="nav-link scroll_to_link py-1" href="#macs_gsize"><i class="fas fa-arrows-alt-h fa-fw"></i><code>⁠-⁠-⁠macs_gsize</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#ucscname"><i class="fas fa-water fa-fw"></i><code>⁠-⁠-⁠ucscname</code></a>
+<a class="nav-link scroll_to_link py-1" href="#blacklist"><i class="fas fa-book-dead fa-fw"></i><code>⁠-⁠-⁠blacklist</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1" href="#experiment-design-options"><i class="fas fa-vials fa-fw"></i>Experiment design options</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1" href="#enzyme"><i class="fas fa-vial fa-fw"></i><code>⁠-⁠-⁠enzyme</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#restriction_sites"><i class="fas fa-cut fa-fw"></i><code>⁠-⁠-⁠restriction_sites</code></a>
+<a class="nav-link scroll_to_link py-1" href="#restriction_sites_cut_off"><i class="fas fa-ruler-horizontal fa-fw"></i><code>⁠-⁠-⁠restriction_sites_cut_off</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1" href="#macs2-peak-calling-options"><i class="fas fa-mountains fa-fw"></i>MACS2 peak calling options</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1" href="#shiftsize"><i class="fas fa-arrows-alt-h fa-fw"></i><code>⁠-⁠-⁠shiftsize</code></a>
+<a class="nav-link scroll_to_link py-1" href="#smooth_window"><i class="fas fa-compress fa-fw"></i><code>⁠-⁠-⁠smooth_window</code></a>
+<a class="nav-link scroll_to_link py-1" href="#qval_thresh"><i class="fas fa-filter fa-fw"></i><code>⁠-⁠-⁠qval_thresh</code></a>
+<a class="nav-link scroll_to_link py-1" href="#high_resolution_r1"><i class="fas fa-mountain fa-fw"></i><code>⁠-⁠-⁠high_resolution_R1</code></a>
+<a class="nav-link scroll_to_link py-1" href="#r1_pval_thresh"><i class="fas fa-filter fa-fw"></i><code>⁠-⁠-⁠r1_pval_thresh</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1" href="#maps-peak-calling-options"><i class="fab fa-connectdevelop fa-fw"></i>MAPS peak calling options</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1" href="#cool_bin"><i class="fas fa-layer-group fa-fw"></i><code>⁠-⁠-⁠cool_bin</code></a>
+<a class="nav-link scroll_to_link py-1" href="#maps_digest_file"><i class="fas fa-stream fa-fw"></i><code>⁠-⁠-⁠maps_digest_file</code></a>
+<a class="nav-link scroll_to_link py-1" href="#maps_cutoff_counts"><i class="fas fa-filter fa-fw"></i><code>⁠-⁠-⁠maps_cutoff_counts</code></a>
+<a class="nav-link scroll_to_link py-1" href="#maps_cutoff_fold_change"><i class="fas fa-check-double fa-fw"></i><code>⁠-⁠-⁠maps_cutoff_fold_change</code></a>
+<a class="nav-link scroll_to_link py-1" href="#maps_cutoff_fdr"><i class="fas fa-percent fa-fw"></i><code>⁠-⁠-⁠maps_cutoff_fdr</code></a>
+<a class="nav-link scroll_to_link py-1" href="#maps_filter"><i class="fas fa-clipboard fa-fw"></i><code>⁠-⁠-⁠maps_filter</code></a>
+<a class="nav-link scroll_to_link py-1" href="#maps_model"><i class="fas fa-cogs fa-fw"></i><code>⁠-⁠-⁠maps_model</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#merge_map_py_source"><i class="fab fa-github fa-fw"></i><code>⁠-⁠-⁠merge_map_py_source</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#feature_frag2bin_source"><i class="fab fa-github fa-fw"></i><code>⁠-⁠-⁠feature_frag2bin_source</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#make_maps_runfile_source"><i class="fab fa-github fa-fw"></i><code>⁠-⁠-⁠make_maps_runfile_source</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#remove_dup"><i class="fas fa-mountain fa-fw"></i><code>⁠-⁠-⁠remove_dup</code></a>
+<a class="nav-link scroll_to_link py-1" href="#snow_type"><i class="fas fa-network-wired fa-fw"></i><code>⁠-⁠-⁠snow_type</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#peak_pair_block"><i class="fas fa-th fa-fw"></i><code>⁠-⁠-⁠peak_pair_block</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1" href="#options-related-to-tracks-juicer_tools-and-circos"><i class="fab fa-wpforms fa-fw"></i>Options related to tracks, juicer_tools, and circos</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1" href="#virtual_4c"><i class="fas fa-align-left fa-fw"></i><code>⁠-⁠-⁠virtual_4c</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#v4c_max_events"><i class="fas fa-water fa-fw"></i><code>⁠-⁠-⁠v4c_max_events</code></a>
+<a class="nav-link scroll_to_link py-1" href="#juicer_jvm_params"><i class="far fa-clock fa-fw"></i><code>⁠-⁠-⁠juicer_jvm_params</code></a>
+<a class="nav-link scroll_to_link py-1" href="#juicer_tools_jar"><i class="far fa-java fa-fw"></i><code>⁠-⁠-⁠juicer_tools_jar</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1  collapse " href="#other-options-not-expose"><i class="fas fa-ban fa-fw"></i>Other options not expose</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1  collapse " href="#skip_peak_qc"><i class="fas fa-ban fa-fw"></i><code>⁠-⁠-⁠skip_peak_qc</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#skip_plot_profile"><i class="fas fa-ban fa-fw"></i><code>⁠-⁠-⁠skip_plot_profile</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#skip_igv"><i class="fas fa-ban fa-fw"></i><code>⁠-⁠-⁠skip_igv</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#skip_trackhub"><i class="fas fa-ban fa-fw"></i><code>⁠-⁠-⁠skip_trackhub</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#enrichment_fdr"><i class="fas fa-ban fa-fw"></i><code>⁠-⁠-⁠enrichment_fdr</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1  collapse " href="#institutional-config-options"><i class="fas fa-university fa-fw"></i>Institutional config options</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1  collapse " href="#custom_config_version"><i class="fas fa-users-cog fa-fw"></i><code>⁠-⁠-⁠custom_config_version</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#custom_config_base"><i class="fas fa-users-cog fa-fw"></i><code>⁠-⁠-⁠custom_config_base</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#config_profile_name"><i class="fas fa-users-cog fa-fw"></i><code>⁠-⁠-⁠config_profile_name</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#config_profile_description"><i class="fas fa-users-cog fa-fw"></i><code>⁠-⁠-⁠config_profile_description</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#config_profile_contact"><i class="fas fa-users-cog fa-fw"></i><code>⁠-⁠-⁠config_profile_contact</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#config_profile_url"><i class="fas fa-users-cog fa-fw"></i><code>⁠-⁠-⁠config_profile_url</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1  collapse " href="#max-job-request-options"><i class="fab fa-acquisitions-incorporated fa-fw"></i>Max job request options</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1  collapse " href="#max_cpus"><i class="fas fa-microchip fa-fw"></i><code>⁠-⁠-⁠max_cpus</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#max_memory"><i class="fas fa-memory fa-fw"></i><code>⁠-⁠-⁠max_memory</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#max_time"><i class="far fa-clock fa-fw"></i><code>⁠-⁠-⁠max_time</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1  collapse " href="#generic-options"><i class="fas fa-file-import fa-fw"></i>Generic options</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1  collapse " href="#help"><i class="fas fa-question-circle fa-fw"></i><code>⁠-⁠-⁠help</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#publish_dir_mode"><i class="fas fa-copy fa-fw"></i><code>⁠-⁠-⁠publish_dir_mode</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#email_on_fail"><i class="fas fa-exclamation-triangle fa-fw"></i><code>⁠-⁠-⁠email_on_fail</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#plaintext_email"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠plaintext_email</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#max_multiqc_email_size"><i class="fas fa-file-upload fa-fw"></i><code>⁠-⁠-⁠max_multiqc_email_size</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#monochrome_logs"><i class="fas fa-palette fa-fw"></i><code>⁠-⁠-⁠monochrome_logs</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#multiqc_config"><i class="fas fa-cog fa-fw"></i><code>⁠-⁠-⁠multiqc_config</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#tracedir"><i class="fas fa-cogs fa-fw"></i><code>⁠-⁠-⁠tracedir</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#validate_params"><i class="fas fa-check-square fa-fw"></i><code>⁠-⁠-⁠validate_params</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#show_hidden_params"><i class="far fa-eye-slash fa-fw"></i><code>⁠-⁠-⁠show_hidden_params</code></a>
+<a class="nav-link scroll_to_link py-1  collapse " href="#enable_conda"><i class="fas fa-bacon fa-fw"></i><code>⁠-⁠-⁠enable_conda</code></a>
+</nav>
+
+<a class="nav-link scroll_to_link py-1" href="#pipeline-controler"><i class="fas fa-file-import fa-fw"></i>Pipeline controler</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1" href="#skip_cutadapt"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠skip_cutadapt</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#skip_fastqc"><i class="fab fa-creative-commons-pd fa-fw"></i><code>⁠-⁠-⁠skip_fastqc</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#skip_peak_annotation"><i class="fas fa-comment-slash fa-fw"></i><code>⁠-⁠-⁠skip_peak_annotation</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#skip_enrichment"><i class="fas fa-comment-slash fa-fw"></i><code>⁠-⁠-⁠skip_enrichment</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#skip_diff_analysis"><i class="fas fa-ban fa-fw"></i><code>⁠-⁠-⁠skip_diff_analysis</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#skip_multiqc"><i class="far fa-calendar-times fa-fw"></i><code>⁠-⁠-⁠skip_multiqc</code></a></nav></nav></nav>
+    <div class="btn-group w-100 mt-2 mb-1 ms-1" role="group">
+      <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target=".param-docs-help-text" aria-expanded="false">
+        <i class="fas fa-question-circle me-1"></i> Show all help
+      </button>
+      <button class="btn btn-sm btn-outline-secondary btn-show-hidden-params" data-bs-toggle="collapse" data-bs-target=".param-docs-hidden, .toc .collapse, .hidden_params_alert" aria-expanded="false">
+        <span class="collapse show"><i class="fas fa-eye-slash"></i> Show hidden params</span>
+        <span class="collapse"><i class="fas fa-eye"></i> Hide hidden params</span>
+      </button>
+    </div><p class="small text-end mt-3"></p></nav></div></div></div>
