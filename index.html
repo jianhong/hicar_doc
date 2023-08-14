@@ -47,6 +47,12 @@
                 vars.push(hash[0]);
                 vars[hash[0]] = hash[1];
             }
+            if(!vars['ver']){
+                vars['ver'] = 'dev2rc';
+            }
+            if(!vars['page']){
+                vars['page'] = 'introduction';
+            }
             return vars;
         }
         _GET = getUrlVars(url);
