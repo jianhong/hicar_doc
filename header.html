@@ -7,7 +7,15 @@
 
 <div class="container-fluid mainpage-subheader-heading chevron-down">
   <div class="container text-center">
-    <p><a href="./launch.html" class="btn btn-success btn-lg d-print-none"><i class="fad fa-rocket-launch me-1"></i> Launch parameter configuration page</a></p>
+    <p><a id='launcher' class="btn btn-success btn-lg d-print-none"><i class="fad fa-rocket-launch me-1"></i> Launch parameter configuration page</a>
+    <script>
+        $(document).ready(function(){
+            $("#launcher").on("click", function(id){
+                document.location.href = '?page=setting&ver='+$('#version_select').val();
+            });
+        });
+    </script>
+    </p>
     <p><a href="https://github.com/jianhong/hicar" class="subheader-link"><i class="fab fa-github"></i> https://github.com/jianhong/hicar</a></p>
   </div>
 </div>

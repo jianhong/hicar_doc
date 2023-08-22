@@ -25,6 +25,8 @@
     <!-- NO CURRENT VERSION ON NPM --> <script src="./assets/canvas2svg.js"></script><!-- NO CURRENT VERSION ON NPM -->
     <script src="./assets/FileSaver.min.js"></script>
     <script src="./assets/jquery.tablesorter.min.js"></script>
+    <script src="./assets/jquery.validate.min.js"></script>
+    <script src="./assets/jquery.csv.min.js"></script>
 
   <!-- Custom nf-core CSS and JS -->
   <link href="./assets/nf-core-light.css" rel="stylesheet" id="theme-stylesheet">
@@ -48,7 +50,7 @@
                 vars[hash[0]] = hash[1];
             }
             if(!vars['ver']){
-                vars['ver'] = 'dev2rc';
+                vars['ver'] = 'ver2rc';
             }
             if(!vars['page']){
                 vars['page'] = 'introduction';
@@ -57,19 +59,19 @@
         }
         _GET = getUrlVars(url);
         $("#main_context").load(_GET['ver']+'/'+_GET['page']+'.html');
-        $("#version_select").val(_GET['ver'])
+        $("#version_select").val(_GET['ver']);
         $(".nav-link").each(function(id){
             if($(this).attr('data')==_GET['page']){
                 $(this).addClass("active");
             }
         });
         $(".nav-link").on("click", function(id){
-            var href='?page='+$(this).attr('data')+'&ver='+$('#version_select').val()
-            location.href = href;
+            var href='?page='+$(this).attr('data')+'&ver='+$('#version_select').val();
+            document.location.href = href;
         });
         // Pipeline page version number dropdown
         $("#version_select").on("change", function () {
-            var active_nav = $(".nav-link, .active").attr('data')
+            var active_nav = $(".nav-link, .active").attr('data');
             document.location.href = '?page='+active_nav+'&ver='+$(this).val();
         });
     });
@@ -99,6 +101,7 @@
                 <div class="input-group input-group-sm">
                   <label class="input-group-text" for="version_select"><i class="fas fa-tags"></i></label>
                   <select class="form-select form-select-sm" id="version_select" data-pipeline="hicar">
+                    <option value="ver2rc">ver2rc</option>
                     <option value="dev2rc">dev2rc</option>
                     <option value="dev">dev</option>
                     <option value="1.0.0">1.0.0</option>
