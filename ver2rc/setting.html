@@ -3,6 +3,18 @@
       Command
       <a href="#command" class="header-link"><span class="fas fa-link"></span></a>
     </h1>
+    <p>
+    The top 3 questions need to be answered before you run the pipeline:
+      <ol>
+          <li>What is the first enzyme, eg. CviQI, and splintoligo you used in the experiment?
+          The sequence will be used to determine the "--enzyme", "--cutadapt-5end" and "--cutadapt_action", etc.
+          If the 5' end adapter is longer than 5bp, it is suggest to trim the adapt unless it is a part of reference sequence.
+          Please double check the 5' end adapter by top 10K R1 reads with the tools provided in this webpage.
+          The input R1 reads must be a plain text file. The tools does not accept the .gz file.</li>
+        <li>What is the correct genome? If wrong genome is defined, it will affect the mapping rate.</li>
+        <li>What is the experiment design? The "--input" and "--output" parameter is required. See "Usage docs" to check how to prepare the input csv file.</li>
+      </ol>
+    </p>
     <div class="alert border bg-light small">
         <code id="code"></code>
     </div>
@@ -56,7 +68,7 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--input-body" class="param-docs-body small"><p>Path to comma-separated file containing information about the samples in the experiment.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#input-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-warning text-dark small ms-2">required</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="input-help">
           <p>You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row. See <a href="https://nf-co.re/hicar/usage#samplesheet-input">usage docs</a>.</p></div>
     </div>
@@ -89,7 +101,7 @@
       <div class="col me-auto">
                 <input id="outdir" name="outdir" type="text" value="results" class="hicarinput" minlength="2" required>
             </div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--outdir-body" class="param-docs-body small"><p>The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--outdir-body" class="param-docs-body small"><p>The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-warning text-dark small ms-2">required</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--email</code></h3></div>
@@ -184,7 +196,7 @@
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--igenomes_base</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--igenomes_base-body" class="param-docs-body small"><p>Directory / URL base for iGenomes references.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--igenomes_base-body" class="param-docs-body small"><p>Directory / URL base for iGenomes references.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--igenomes_ignore</code></h3></div>
@@ -192,7 +204,7 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--igenomes_ignore-body" class="param-docs-body small"><p>Do not load the iGenomes reference config.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#igenomes_ignore-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="igenomes_ignore-help">
           <p>Do not load <code>igenomes.config</code> when running the pipeline. You may choose this option if you observe clashes between custom parameters and those supplied in <code>igenomes.config</code>.</p></div>
     </div>
@@ -329,7 +341,7 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--restriction_sites-body" class="param-docs-body small"><p>Specifies that the cutting sequence has to be using.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#restriction_sites-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="restriction_sites-help">
           <p>It will be automatically assigned by the enzyme inputed.</p></div>
     </div>
@@ -549,7 +561,7 @@
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--remove_dup</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--remove_dup-body" class="param-docs-body small"><p>remove duplicates for high resolution peaks or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--remove_dup-body" class="param-docs-body small"><p>remove duplicates for high resolution peaks or not</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--snow_type</code></h3></div>
@@ -569,19 +581,19 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--peak_pair_block-body" class="param-docs-body small"><p>The block number of peak pair</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#peak_pair_block-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="peak_pair_block-help">
           <p>The block number of peak pair in each thread to count the reads. Smaller number will decrease the memory cost and increase the computation time for parepare the counts in hipeak calling.</p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--min_counts_per_loop</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--min_counts_per_loop-body" class="param-docs-body small"><p>The minimal number reads count of peak pair</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--min_counts_per_loop-body" class="param-docs-body small"><p>The minimal number reads count of peak pair</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--create_maps_signal</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--create_maps_signal-body" class="param-docs-body small"><p>create cooler files for MAPS or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--create_maps_signal-body" class="param-docs-body small"><p>create cooler files for MAPS or not</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--hicdcplus_cutoff_fdr</code></h3></div>
@@ -768,17 +780,17 @@
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--maps_3d_ext</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--maps_3d_ext-body" class="param-docs-body small"><p>extension file name for MAPS</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--maps_3d_ext-body" class="param-docs-body small"><p>extension file name for MAPS</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--long_bedpe_postfix</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--long_bedpe_postfix-body" class="param-docs-body small"><p>extension file name for long pairs</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--long_bedpe_postfix-body" class="param-docs-body small"><p>extension file name for long pairs</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--short_bed_postfix</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--short_bed_postfix-body" class="param-docs-body small"><p>extension file name for short pairs</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--short_bed_postfix-body" class="param-docs-body small"><p>extension file name for short pairs</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group ">
       <div class="col-12 param-docs-row-id-col"><h2>Options related to tracks, HiCTools, and circos</h2></div>
@@ -807,32 +819,32 @@
     <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group param-docs-hidden collapse d-print-block ">
       <div class="col-12 param-docs-row-id-col"><h2>Other options not expose</h2></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--skip_peak_qc</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--skip_peak_qc-body" class="param-docs-body small"><p>skip peak QC or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--skip_peak_qc-body" class="param-docs-body small"><p>skip peak QC or not</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--skip_plot_profile</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--skip_plot_profile-body" class="param-docs-body small"><p>skip plot profile or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--skip_plot_profile-body" class="param-docs-body small"><p>skip plot profile or not</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--skip_igv</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--skip_igv-body" class="param-docs-body small"><p>skip creat IGV files or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--skip_igv-body" class="param-docs-body small"><p>skip creat IGV files or not</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--skip_trackhub</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--skip_trackhub-body" class="param-docs-body small"><p>skip create trackhub files or not</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--skip_trackhub-body" class="param-docs-body small"><p>skip create trackhub files or not</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--enrichment_fdr</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--enrichment_fdr-body" class="param-docs-body small"><p>cutoff value for false discovery rate of enrichment analysis</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--enrichment_fdr-body" class="param-docs-body small"><p>cutoff value for false discovery rate of enrichment analysis</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group param-docs-hidden collapse d-print-block ">
       <div class="col-12 param-docs-row-id-col"><h2>Institutional config options</h2></div>
@@ -840,14 +852,14 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#Institutional config options-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="Institutional config options-help">
           <p>The centralised nf-core configuration profiles use a handful of pipeline parameters to describe themselves. This information is then printed to the Nextflow log when you run a pipeline. You should not need to change these values when you run a pipeline.</p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--custom_config_version</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--custom_config_version-body" class="param-docs-body small"><p>Git commit id for Institutional configs.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--custom_config_version-body" class="param-docs-body small"><p>Git commit id for Institutional configs.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--custom_config_base</code></h3></div>
@@ -855,29 +867,29 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--custom_config_base-body" class="param-docs-body small"><p>Base directory for Institutional configs.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#custom_config_base-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="custom_config_base-help">
           <p>If you're running offline, Nextflow will not be able to fetch the institutional config files from the internet. If you don't need them, then this is not a problem. If you do need them, you should download the files from the repo and tell Nextflow where to find them with this parameter.</p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--config_profile_name</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--config_profile_name-body" class="param-docs-body small"><p>Institutional config name.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--config_profile_name-body" class="param-docs-body small"><p>Institutional config name.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--config_profile_description</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--config_profile_description-body" class="param-docs-body small"><p>Institutional config description.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--config_profile_description-body" class="param-docs-body small"><p>Institutional config description.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--config_profile_contact</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--config_profile_contact-body" class="param-docs-body small"><p>Institutional config contact information.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--config_profile_contact-body" class="param-docs-body small"><p>Institutional config contact information.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--config_profile_url</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--config_profile_url-body" class="param-docs-body small"><p>Institutional config URL link.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--config_profile_url-body" class="param-docs-body small"><p>Institutional config URL link.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group param-docs-hidden collapse d-print-block ">
       <div class="col-12 param-docs-row-id-col"><h2>Max job request options</h2></div>
@@ -885,7 +897,7 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#Max job request options-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="Max job request options-help">
           <p>If you are running on a smaller system, a pipeline step requesting more resources than are available may cause the Nextflow to stop the run with an error. These options allow you to cap the maximum resources requested by any single job so that the pipeline will run on your system.</p>
 <p>Note that you can not <em>increase</em> the resources requested by any job using these options. For that you will need your own configuration file. See <a href="https://nf-co.re/usage/configuration">the nf-core website</a> for details.</p></div>
@@ -896,7 +908,7 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--max_cpus-body" class="param-docs-body small"><p>Maximum number of CPUs that can be requested for any single job.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#max_cpus-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="max_cpus-help">
           <p>Use to set an upper-limit for the CPU requirement for each process. Should be an integer e.g. <code><span class="text-nowrap">--max_cpus</span> 1</code></p></div>
     </div>
@@ -906,7 +918,7 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--max_memory-body" class="param-docs-body small"><p>Maximum amount of memory that can be requested for any single job.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#max_memory-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="max_memory-help">
           <p>Use to set an upper-limit for the memory requirement for each process. Should be a string in the format integer-unit e.g. <code><span class="text-nowrap">--max_memory</span> '8.GB'</code></p></div>
     </div>
@@ -916,17 +928,14 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--max_time-body" class="param-docs-body small"><p>Maximum amount of time that can be requested for any single job.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#max_time-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="max_time-help">
           <p>Use to set an upper-limit for the time requirement for each process. Should be a string in the format integer-unit e.g. <code><span class="text-nowrap">--max_time</span> '2.h'</code></p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group ">
       <div class="col-12 param-docs-row-id-col"><h2>Generic options</h2></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
-        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#Generic options-help" aria-expanded="false">
-          <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="Generic options-help">
           <p>These options are common to all nf-core pipelines and allow you to customise some of the core preferences for how the pipeline runs.</p>
 <p>Typically these options would be set in a Nextflow config file loaded for all pipeline runs, such as <code>~/.nextflow/config</code>.</p></div>
@@ -934,12 +943,12 @@
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--help</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--help-body" class="param-docs-body small"><p>Display help text.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--help-body" class="param-docs-body small"><p>Display help text.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--version</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--version-body" class="param-docs-body small"><p>Display version and exit.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--version-body" class="param-docs-body small"><p>Display version and exit.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--publish_dir_mode</code></h3></div>
@@ -947,7 +956,7 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--publish_dir_mode-body" class="param-docs-body small"><p>Method used to save pipeline results to output directory.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#publish_dir_mode-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="publish_dir_mode-help">
           <p>The Nextflow <code>publishDir</code> option specifies which intermediate files should be saved to the output directory. This option tells the pipeline what method should be used to move these files. See <a href="https://www.nextflow.io/docs/latest/process.html#publishdir">Nextflow docs</a> for details.</p></div>
     </div>
@@ -957,24 +966,24 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--email_on_fail-body" class="param-docs-body small"><p>Email address for completion summary, only when pipeline fails.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#email_on_fail-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="email_on_fail-help">
           <p>An email address to send a summary email to when the pipeline is completed - ONLY sent if the pipeline does not exit successfully.</p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--plaintext_email</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--plaintext_email-body" class="param-docs-body small"><p>Send plain-text email instead of HTML.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--plaintext_email-body" class="param-docs-body small"><p>Send plain-text email instead of HTML.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--max_multiqc_email_size</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--max_multiqc_email_size-body" class="param-docs-body small"><p>File size limit when attaching MultiQC reports to summary emails.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--max_multiqc_email_size-body" class="param-docs-body small"><p>File size limit when attaching MultiQC reports to summary emails.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--monochrome_logs</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--monochrome_logs-body" class="param-docs-body small"><p>Do not use coloured log outputs.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--monochrome_logs-body" class="param-docs-body small"><p>Do not use coloured log outputs.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--hook_url</code></h3></div>
@@ -982,19 +991,19 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--hook_url-body" class="param-docs-body small"><p>Incoming hook URL for messaging service</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#hook_url-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="hook_url-help">
           <p>Incoming hook URL for messaging service. Currently, MS Teams and Slack are supported.</p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--multiqc_config</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--multiqc_config-body" class="param-docs-body small"><p>Custom config file to supply to MultiQC.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--multiqc_config-body" class="param-docs-body small"><p>Custom config file to supply to MultiQC.</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--multiqc_logo</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--multiqc_logo-body" class="param-docs-body small"><p>Custom logo file to supply to MultiQC. File name must also be set in the MultiQC config file</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--multiqc_logo-body" class="param-docs-body small"><p>Custom logo file to supply to MultiQC. File name must also be set in the MultiQC config file</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--multiqc_methods_description</code></h3></div>
@@ -1006,7 +1015,7 @@
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--validate_params</code></h3></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--validate_params-body" class="param-docs-body small"><p>Boolean whether to validate parameters against the schema at runtime</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--validate_params-body" class="param-docs-body small"><p>Boolean whether to validate parameters against the schema at runtime</p></div><div class="param_labels_helpbtn d-flex align-items-center"><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--validationShowHiddenParams</code></h3></div>
@@ -1014,7 +1023,7 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--validationShowHiddenParams-body" class="param-docs-body small"><p>Show all params when using <code><span class="text-nowrap">--help</code></p></span></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#validationShowHiddenParams-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="validationShowHiddenParams-help">
           <p>By default, parameters set as <em>hidden</em> in the schema are not shown on the command line when a user runs with <code><span class="text-nowrap">--help</code>.</span> Specifying this option will tell the pipeline to show all parameters.</p></div>
     </div>
@@ -1024,7 +1033,7 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--validationFailUnrecognisedParams-body" class="param-docs-body small"><p>Validation of parameters fails when an unrecognised parameter is found.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#validationFailUnrecognisedParams-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="validationFailUnrecognisedParams-help">
           <p>By default, when an unrecognised parameter is found, it returns a warinig.</p></div>
     </div>
@@ -1034,17 +1043,14 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--validationLenientMode-body" class="param-docs-body small"><p>Validation of parameters in lenient more.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#validationLenientMode-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+        </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="validationLenientMode-help">
           <p>Allows string values that are parseable as numbers or booleans. For further information see <a href="https://github.com/everit-org/json-schema#lenient-mode">JSONSchema docs</a>.</p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group ">
       <div class="col-12 param-docs-row-id-col"><h2>Pipeline controler</h2></div>
       <div class="col me-auto"></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
-        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#Pipeline controler-help" aria-expanded="false">
-          <i class="fas fa-question-circle"></i> Help
-        </button></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="Pipeline controler-help">
           <p>These options allow you to customise some of the pipeline steps for how the pipeline runs.</p></div>
     </div>
@@ -1221,6 +1227,10 @@ process {
               }else{
                 cmd += " --" + $(this).attr("id") + " " + $(this).val();
               }
+            }
+          }else{
+            if($(this).attr("id")=="input"){
+              cmd += " --input required";
             }
           }
         });
