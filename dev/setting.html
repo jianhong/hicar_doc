@@ -9,7 +9,7 @@
           <li>What is the first enzyme, eg. CviQI, and splintoligo you used in the experiment?
           The sequence will be used to determine the "--enzyme", "--cutadapt-5end" and "--cutadapt_action", etc.
           If the 5' end adapter is longer than 5bp, it is suggest to trim the adapt unless it is a part of reference sequence.
-          Please double check the 5' end adapter by top 10K R1 reads with the tool provided in this webpage.
+          Please double check the 5' end adapter by top 1K R1 reads with the tool provided in this webpage.
           The input R1 reads must be a plain text file. The tool does not accept the .gz file.</li>
         <li>What is the correct genome? If wrong genome is defined, it will affect the mapping rate.</li>
         <li>What is the experiment design? The "--input" and "--output" parameters are required. See "Usage docs" to check how to prepare the input csv file.</li>
@@ -17,6 +17,10 @@
     </p>
     <div class="alert border bg-light small">
         <code id="code"></code>
+    </div>
+    <p><span id="config_file_name">profile.config<span>: (check correct format at <a href="#example-profile-config">bottom</a>, <a href="https://www.nextflow.io/docs/latest/config.html">nextflow documentation</a> and <a href="https://nf-co.re/hicar/1.0.0/docs/usage/#custom-configuration">the resourcerequests documentation</a>.)</p>
+    <div class="alert border bg-light small">
+        <code id="config_profile"></code>
     </div>
     <h1 id="parameters" class="">
       Parameters
@@ -55,6 +59,71 @@
           </div>
       </div>
   
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
+      <div class="col-12 param-docs-row-id-col">
+        
+    <h2 id="resource-related" class="">
+      Resource related
+      <a href="#resource-related" class="header-link"><span class="fas fa-link"></span></a>
+    </h2>
+      </div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center"> 
+        
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+            <h3><code>max_cpus</code>
+         </div>
+         <div class="col me-auto">
+             <input type="text" id="max_cpus" name="max_cpus" value="16" class="resourcesinput" datatype="process">
+         </div>
+    
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+            <h3><code>max_memory</code>
+         </div>
+         <div class="col me-auto">
+             <input type="text" id="max_memory" name="max_memory" value="60.GB" class="resourcesinput" datatype="process">
+         </div>
+    
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+            <h3><code>max_time</code>
+         </div>
+         <div class="col me-auto">
+             <input type="text" id="max_time" name="max_time" value="48.h" class="resourcesinput" datatype="process">
+         </div>
+    
+         <div class="col me-auto">
+             <input type="button" id="add_new_module_resource" name="add_new_module_resource" value="add module resource" datatype="process">
+         </div>
+                
+     </div> 
+        
+    <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
+      <div class="col-12 param-docs-row-id-col">
+        
+    <h2 id="cluster-related" class="">
+      Cluster related
+      <a href="#cluster-related" class="header-link"><span class="fas fa-link"></span></a>
+    </h2>
+      </div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center"> 
+        
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+            <h3><code>executor</code>
+         </div>
+         <div class="col me-auto">
+             <input type="text" id="executor" name="executor" value="slurm" class="resourcesinput" datatype="params">
+         </div>
+    
+         <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col">
+            <h3><code>clusterOptions</code>
+         </div>
+         <div class="col me-auto">
+             <input type="text" id="clusterOptions" name="clusterOptions" value="" class="resourcesinput" datatype="params">
+         </div>
+    
+     </div> 
+        
     <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group ">
       <div class="col-12 param-docs-row-id-col"><h2>Input/output options</h2></div>
       <div class="col me-auto"></div>
@@ -372,6 +441,8 @@
          </div>
          <div class="col me-auto">
                 <input id="fastq_r1" name="fastq_r1" type="file"/>
+                <label for="fq_r1_lines">check reads:</label>
+                <input id="fq_r1_lines" name="fq_r1_lines" type="number" value="1000" step="1000"/>
          </div>
       
     </div>
@@ -1113,7 +1184,7 @@
   </from>
   
       <div class="col-12 param-docs-row-id-col">
-          <h2 id="inputoutput-options">
+          <h2 id="example-profile-config">
               <i class="fas fa-terminal fa-fw"></i>
               Example of profile.config
           </h2>
@@ -1181,18 +1252,75 @@ process {
             }
           }else{
             if($(this).attr("id")=="input"){
-              cmd += " --input required";
+              cmd += " --input <span class=\"badge bg-warning text-dark small ms-2\">required</span>";
             }
           }
         });
-
-
         return(cmd);
       }
-      $("#code").text(getCmd());
+      getConfigProfile = function(){
+        var prof = {"process":{},"params":{}};
+        $(".resourcesinput").each(function(){
+            if($(this).val()!=""){
+                var datatype = $(this).attr("datatype").split(" ");
+                if(datatype.length==1){
+                    prof[$(this).attr("datatype")][$(this).attr("id")] = $(this).val();
+                }else{
+                    if(datatype.length==4 && datatype[1]=="module"){
+                        if($(this).attr("id").indexOf("module")!==-1){
+                            if(prof[datatype[0]]==undefined){
+                                prof[datatype[0]]={};
+                            }
+                            
+                            var this_id = "withName: "+$("#"+datatype[2]+"withName").val();
+                            if(this_id!="withName: "){
+                                if(prof[datatype[0]][this_id]==undefined){
+                                    prof[datatype[0]][this_id] = {};
+                                }
+                                if(datatype[3]!="withName"){
+                                    prof[datatype[0]][this_id][datatype[3]]=$(this).val();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        prof = JSON.stringify(prof, null, 4);
+        prof = prof.replace(/,/g, "<br/>");
+        prof = prof.replace(/\"/g, "");
+        prof = prof.replace(/: {/g, " {");
+        prof = prof.replace(/:/g, " =");
+        prof = prof.replace(/withName =/g, "withName: ");
+        prof = prof.substring(1, prof.length-1);
+        prof = prof.replace(/{/g, "{<br/>");
+        prof = prof.replace(/}/g, "<br/>}<br/>");
+        return("<br/>"+prof);
+      }
+      $("#add_new_module_resource").click(function(){
+        var p = $("<div></div>").addClass("row param-docs-row border-bottom align-items-center new_module_param");
+        var this_id="module"+$(".new_module_param").length;
+        ["withName", "memory", "time", "cpus"].forEach(function(it){
+            var title = $("<div></div>").addClass("col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col");
+            title.append($("<h3>").html(it));
+            var content = $("<div></div>").addClass("col me-auto");
+            content.append($("<input>").attr("type", "text").attr("id", this_id+it).attr("name", this_id+it).addClass("resourcesinput").attr("datatype", "process module "+this_id+" "+it));
+            p.append(title, content);
+        });
+        p.insertAfter($(this).parent());
+      });
+      $("#code").html(getCmd());
+      $("#config_profile").html(getConfigProfile());
       $(".hicarinput").change(function(){
         var cmd = getCmd();
-        $("#code").text(cmd);
+        if($(this).attr("id")=="config"){
+            $("#config_file_name").text($(this).val());
+        }
+        $("#code").html(cmd);
+        $("#config_profile").html(getConfigProfile());
+      });
+      $("body").on("change", ".resourcesinput", function(){
+        $("#config_profile").html(getConfigProfile());
       });
      function readTopNLines(file, maxlines) {
         var CHUNK_SIZE = 50000; // 50kb, arbitrarily chosen.
@@ -1273,10 +1401,9 @@ process {
           if ($("#cutadapt_5end").val().length>5) {
               if($("#cutadapt_action").val()!="trim"){
                 alert("The length of 5end adapter is greater than 5, changed the action into trim.");
+                $("#cutadapt_action").val("trim");
+                $("#code").html(getCmd());
               }
-              $("#cutadapt_action").val("trim");
-          }else{
-              $("#cutadapt_action").val("none");
           }
           if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
               alert("The File APIs are not fully supported in this browser.");
@@ -1288,7 +1415,7 @@ process {
                   alert("The gz file is not support yet. Please try to load top 1000 lines by zcat f1_reads.gz > r1_test.fastq!");
                   return;
               }
-              readTopNLines(file, 4000, function onComplete(){});
+              readTopNLines(file, 4*parseInt($("#fq_r1_lines").val()), function onComplete(){});
           }
       }
       $("#fastq_r1").change(checkAdapter);
@@ -1347,4 +1474,11 @@ process {
           }
       });
     });
-    </script></div></div><div class="col-12 col-lg-3 ps-2"><div class="side-sub-subnav sticky-top"></div></div></div>
+    </script></div></div><div class="col-12 col-lg-3 ps-2"><div class="side-sub-subnav sticky-top"><nav class="toc pt-2 auto-toc border-start d-print-none"><strong class="ms-3 d-inline-block w-100 text-secondary border-bottom">On this page</strong>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1  active " href="#command">Command</a>
+<a class="nav-link scroll_to_link py-1 " href="#parameters">Parameters</a>
+<nav class="nav flex-column flex-nowrap">
+<a class="nav-link scroll_to_link py-1 " href="#resource-related">Resource related</a>
+<a class="nav-link scroll_to_link py-1 " href="#cluster-related">Cluster related</a>
+<a class="nav-link scroll_to_link py-1 " href="#example-profile-config"><i class="fas fa-terminal fa-fw"></i>Example of profile.config</a></nav></nav><p class="small text-end mt-3"><a href="#" class="text-muted"><i class="fas fa-arrow-to-top"></i> Back to top</a></p></nav></div></div></div>
