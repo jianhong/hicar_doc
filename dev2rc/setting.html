@@ -1296,7 +1296,9 @@ process {
                   cmd += " --" + $(this).attr("id");
                 }
               }else{
-                cmd += " --" + $(this).attr("id") + " " + $(this).val();
+                if($(this).attr("id")!="genome" && $(this).val()!="custom"){
+                    cmd += " --" + $(this).attr("id") + " " + $(this).val();
+                }
               }
             }
           }else{
