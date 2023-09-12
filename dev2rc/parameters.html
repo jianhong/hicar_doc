@@ -82,7 +82,7 @@
           <i class="fas fa-question-circle"></i> Help
         </button></div></div>
         <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--fasta-help">
-          <p>This parameter is <em>mandatory</em> if <code><span class="text-nowrap">--genome</code></span> is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with <code><span class="text-nowrap">--save_reference</code></span> to save BWA index for future runs.</p><code class="text-small"><span class="text-muted">pattern: </span>^\S+\.fn?a(sta)?(\.gz)?$</code></div>
+          <p>This parameter is <em>mandatory</em> if <code><span class="text-nowrap">--genome</code></span> is not specified. If you don't have a BWA index available this will be generated for you automatically.</p><code class="text-small"><span class="text-muted">pattern: </span>^\S+\.fn?a(sta)?(\.gz)?$</code></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="igenomes_base" class="toc-hidden"><i class="fas fa-cloud-download-alt fa-fw"></i> <code>--igenomes_base</code><a href="#igenomes_base" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
@@ -915,6 +915,21 @@
       <div class="col me-auto"><div id="--kraken2_db-body" class="param-docs-body small"><p>the database for Kraken2</p></div></div>
       <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20230605.tar.gz'</code></div>
     </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="publish_raw_pairsam" class=""><i class="fas fa-copy fa-fw"></i> <code>--publish_raw_pairsam</code><a href="#publish_raw_pairsam" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
+      <div class="col me-auto"><div id="--publish_raw_pairsam-body" class="param-docs-body small"><p>Save the raw pairsam files</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="publish_filtered_pairs" class=""><i class="fas fa-copy fa-fw"></i> <code>--publish_filtered_pairs</code><a href="#publish_filtered_pairs" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
+      <div class="col me-auto"><div id="--publish_filtered_pairs-body" class="param-docs-body small"><p>Save the filtered pairs</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="publish_filtered_h5" class=""><i class="fas fa-copy fa-fw"></i> <code>--publish_filtered_h5</code><a href="#publish_filtered_h5" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
+      <div class="col me-auto"><div id="--publish_filtered_h5-body" class="param-docs-body small"><p>Save the filtered pairs in hdf5 format.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
     <div class="alert border bg-light small hidden_params_alert collapse show">
       <p>The following uncommon parameters have been hidden: <code>--igenomes_base</code>, <code>--igenomes_ignore</code>, <code>--restriction_sites</code>, <code>--remove_dup</code>, <code>--peak_pair_block</code>, <code>--min_counts_per_loop</code>, <code>--create_maps_signal</code>, <code>--maps_3d_ext</code>, <code>--long_bedpe_postfix</code>, <code>--short_bed_postfix</code>, <code>--skip_peak_qc</code>, <code>--skip_plot_profile</code>, <code>--skip_igv</code>, <code>--skip_trackhub</code>, <code>--enrichment_fdr</code>, <code>--custom_config_version</code>, <code>--custom_config_base</code>, <code>--config_profile_name</code>, <code>--config_profile_description</code>, <code>--config_profile_contact</code>, <code>--config_profile_url</code>, <code>--max_cpus</code>, <code>--max_memory</code>, <code>--max_time</code>, <code>--help</code>, <code>--version</code>, <code>--publish_dir_mode</code>, <code>--email_on_fail</code>, <code>--plaintext_email</code>, <code>--max_multiqc_email_size</code>, <code>--monochrome_logs</code>, <code>--hook_url</code>, <code>--multiqc_config</code>, <code>--multiqc_logo</code>, <code>--validate_params</code>, <code>--validationShowHiddenParams</code>, <code>--validationFailUnrecognisedParams</code>, <code>--validationLenientMode</code></p>
       <p><a href=".param-docs-hidden, .toc .collapse, .hidden_params_alert" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">Click here</a> to show all hidden params.</p>
@@ -1079,7 +1094,10 @@
 <a class="nav-link scroll_to_link py-1 " href="#create_virtual_4c"><i class="fas fa-align-left fa-fw"></i><code>⁠-⁠-⁠create_virtual_4c</code></a>
 <a class="nav-link scroll_to_link py-1 " href="#skip_circos"><i class="far fa-times-circle fa-fw"></i><code>⁠-⁠-⁠skip_circos</code></a>
 <a class="nav-link scroll_to_link py-1 " href="#do_contamination_analysis"><i class="far fa-times-circle fa-fw"></i><code>⁠-⁠-⁠do_contamination_analysis</code></a>
-<a class="nav-link scroll_to_link py-1 " href="#kraken2_db"><i class="far fa-times-circle fa-fw"></i><code>⁠-⁠-⁠kraken2_db</code></a></nav></nav></nav>
+<a class="nav-link scroll_to_link py-1 " href="#kraken2_db"><i class="far fa-times-circle fa-fw"></i><code>⁠-⁠-⁠kraken2_db</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#publish_raw_pairsam"><i class="fas fa-copy fa-fw"></i><code>⁠-⁠-⁠publish_raw_pairsam</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#publish_filtered_pairs"><i class="fas fa-copy fa-fw"></i><code>⁠-⁠-⁠publish_filtered_pairs</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#publish_filtered_h5"><i class="fas fa-copy fa-fw"></i><code>⁠-⁠-⁠publish_filtered_h5</code></a></nav></nav></nav>
     <div class="btn-group w-100 mt-2 mb-1 ms-1" role="group">
       <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target=".param-docs-help-text" aria-expanded="false">
         <i class="fas fa-question-circle me-1"></i> Show all help
