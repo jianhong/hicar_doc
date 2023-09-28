@@ -477,17 +477,41 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--cutadapt_error_tolerance-body" class="param-docs-body small"><p>Error tolerance for adaptor filter if not skip_cutadapt</p></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center ">
-      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--pairtools_walks_policy</code></h3></div>
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--pairtools_parse_params</code></h3></div>
       <div class="col me-auto">
-              <select id="pairtools_walks_policy" name="pairtools_walks_policy" class="hicarinput" >
-        <option value="mask" selected>mask</option><option value="all" >all</option><option value="5any" >5any</option><option value="5unique" >5unique</option><option value="3any" >3any</option><option value="3unique" >3unique</option>
-              </select>
-        </div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--pairtools_walks_policy-body" class="param-docs-body small"><p>The action for rescuing complex walks</p></div><div class="param_labels_helpbtn d-flex align-items-center">
-        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#pairtools_walks_policy-help" aria-expanded="false">
+                  <input id="pairtools_parse_params" name="pairtools_parse_params" type="text" value="--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --walks-policy mask  --no-flip --drop-seq --drop-sam" class="hicarinput" >
+              </div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--pairtools_parse_params-body" class="param-docs-body small"><p>The parameters used by parse</p></div><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#pairtools_parse_params-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
         </button></div></div>
-        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="pairtools_walks_policy-help">
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="pairtools_parse_params-help">
+          <p>See more details at <a href="https://pairtools.readthedocs.io/en/latest/parsing.html">https://pairtools.readthedocs.io/en/latest/parsing.html</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center ">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--pairtools_parse2_params</code></h3></div>
+      <div class="col me-auto">
+                  <input id="pairtools_parse2_params" name="pairtools_parse2_params" type="text" value="--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --report-position outer --add-pair-index --no-flip --drop-seq --expand --max-expansion-depth 6" class="hicarinput" >
+              </div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--pairtools_parse2_params-body" class="param-docs-body small"><p>The parameters used by parse2</p></div><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#pairtools_parse2_params-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="pairtools_parse2_params-help">
+          <p>See more details at <a href="https://pairtools.readthedocs.io/en/latest/parsing.html">https://pairtools.readthedocs.io/en/latest/parsing.html</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center ">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--pairtools_parse_version</code></h3></div>
+      <div class="col me-auto">
+              <select id="pairtools_parse_version" name="pairtools_parse_version" class="hicarinput" >
+        <option value="parse" selected>parse</option><option value="parse2" >parse2</option>
+              </select>
+        </div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--pairtools_parse_version-body" class="param-docs-body small"><p>The parse tools used for the rescue. Avaiable choices are parse and parse2.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#pairtools_parse_version-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="pairtools_parse_version-help">
           <p>See more details at <a href="https://pairtools.readthedocs.io/en/latest/parsing.html#multiple-ligations-walks">https://pairtools.readthedocs.io/en/latest/parsing.html#multiple-ligations-walks</a></p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group ">
@@ -1298,7 +1322,7 @@ process {
       email_on_fail:{pattern:"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"},
       max_multiqc_email_size:{pattern:"^\d+(\.\d+)?\.?\s*(K|M|G|T)?B$"}}
       });
-      var defaultvalues={"input":"","method":'HiCAR',"anchor_peaks":"","outdir":"","email":"","multiqc_title":"","genome":"","fasta":"","bwa_index":"","gtf":"","gff":"","gene_bed":"","mappability":"","macs_gsize":"","ucscname":"","blacklist":"","publish_mappability":"","publish_genome":"","enzyme":'CviQI',"restriction_sites_cut_off":0.5,"cutadapt_5end":'^TAC',"cutadapt_3end":'skip',"cutadapt_minimum_length":'50:50',"cutadapt_action":'trim',"cutadapt_error_tolerance":0.15,"pairtools_walks_policy":'mask',"shiftsize":-75,"smooth_window":150,"qval_thresh":0.01,"cool_bin":'5000_10000',"maps_digest_file":'None',"maps_cutoff_counts":12,"maps_cutoff_fold_change":2,"maps_cutoff_fdr":2,"maps_filter":'None',"maps_model":'pospoisson',"maps_prepare_trans":"","snow_type":'SOCK',"hicdcplus_cutoff_fdr":0.05,"peakachu_pretrained_url":'http://3dgenome.fsm.northwestern.edu/peakachu/HiCAR-models/HiCAR-peakachu-pretrained.',"call_high_peak":"","r1_pval_thresh":0.1,"res_compartments":100000,"res_tads":10000,"tad_tool":'hicexplorer',"apa_peak":'Anchor 1D peaks',"apa_tool":'hicexplorer',"apa_format":'png',"compartments_tool":'cooltools',"interactions_tool":'maps',"da_tool":'diffhic',"v4c_tool":'hicexplorer',"tfea_tool":'homer',"juicer_tools_jar":'https://github.com/aidenlab/JuicerTools/releases/download/v3.0.0/juicer_tools.3.0.0.jar',"juicer_norm_method":'SCALE',"peak_interactions_threshold":2,"v4c_max_events":25,"hic_tools_jar":'https://github.com/aidenlab/HiCTools/releases/download/v3.30.00/hic_tools.3.30.00.jar',"multiqc_methods_description":"","skip_cutadapt":"","resample_pairs":"","skip_fastqc":"","skip_peak_annotation":"","skip_diff_analysis":"","skip_multiqc":"","do_apa":"","skip_compartments":"","skip_tads":"","skip_interactions":"","do_tfea":"","create_virtual_4c":"","skip_circos":"","do_contamination_analysis":"","kraken2_db":'https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20230605.tar.gz',"publish_raw_pairsam":"","publish_filtered_pairs":"","publish_filtered_h5":"","profile":"","config":""};
+      var defaultvalues={"input":"","method":'HiCAR',"anchor_peaks":"","outdir":"","email":"","multiqc_title":"","genome":"","fasta":"","bwa_index":"","gtf":"","gff":"","gene_bed":"","mappability":"","macs_gsize":"","ucscname":"","blacklist":"","publish_mappability":"","publish_genome":"","enzyme":'CviQI',"restriction_sites_cut_off":0.5,"cutadapt_5end":'^TAC',"cutadapt_3end":'skip',"cutadapt_minimum_length":'50:50',"cutadapt_action":'trim',"cutadapt_error_tolerance":0.15,"pairtools_parse_params":'--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --walks-policy mask  --no-flip --drop-seq --drop-sam',"pairtools_parse2_params":'--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --report-position outer --add-pair-index --no-flip --drop-seq --expand --max-expansion-depth 6',"pairtools_parse_version":'parse',"shiftsize":-75,"smooth_window":150,"qval_thresh":0.01,"cool_bin":'5000_10000',"maps_digest_file":'None',"maps_cutoff_counts":12,"maps_cutoff_fold_change":2,"maps_cutoff_fdr":2,"maps_filter":'None',"maps_model":'pospoisson',"maps_prepare_trans":"","snow_type":'SOCK',"hicdcplus_cutoff_fdr":0.05,"peakachu_pretrained_url":'http://3dgenome.fsm.northwestern.edu/peakachu/HiCAR-models/HiCAR-peakachu-pretrained.',"call_high_peak":"","r1_pval_thresh":0.1,"res_compartments":100000,"res_tads":10000,"tad_tool":'hicexplorer',"apa_peak":'Anchor 1D peaks',"apa_tool":'hicexplorer',"apa_format":'png',"compartments_tool":'cooltools',"interactions_tool":'maps',"da_tool":'diffhic',"v4c_tool":'hicexplorer',"tfea_tool":'homer',"juicer_tools_jar":'https://github.com/aidenlab/JuicerTools/releases/download/v3.0.0/juicer_tools.3.0.0.jar',"juicer_norm_method":'SCALE',"peak_interactions_threshold":2,"v4c_max_events":25,"hic_tools_jar":'https://github.com/aidenlab/HiCTools/releases/download/v3.30.00/hic_tools.3.30.00.jar',"multiqc_methods_description":"","skip_cutadapt":"","resample_pairs":"","skip_fastqc":"","skip_peak_annotation":"","skip_diff_analysis":"","skip_multiqc":"","do_apa":"","skip_compartments":"","skip_tads":"","skip_interactions":"","do_tfea":"","create_virtual_4c":"","skip_circos":"","do_contamination_analysis":"","kraken2_db":'https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20230605.tar.gz',"publish_raw_pairsam":"","publish_filtered_pairs":"","publish_filtered_h5":"","profile":"","config":""};
       getCmd = function(){
         var cmd = "nextflow run jianhong/hicar -r " + $("#version_select").val();
         $(".hicarinput").each(function(index, element){

@@ -252,15 +252,35 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>0.15</code></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center">
-      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="pairtools_walks_policy" class=""><i class="fas fa-remove-format fa-fw"></i> <code>--pairtools_walks_policy</code><a href="#pairtools_walks_policy" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
-      <div class="col me-auto"><div id="--pairtools_walks_policy-body" class="param-docs-body small"><p>The action for rescuing complex walks</p></div></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="btn-group">
-                      <button type="button" class="btn btn-light border-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options: <code class="text-small">'mask'</code> (default)</button>
-                    <div class="dropdown-menu"><a class="dropdown-item"><code class="text-small">'mask' (default)</code></a><a class="dropdown-item"><code class="text-small">'all'</code></a><a class="dropdown-item"><code class="text-small">'5any'</code></a><a class="dropdown-item"><code class="text-small">'5unique'</code></a><a class="dropdown-item"><code class="text-small">'3any'</code></a><a class="dropdown-item"><code class="text-small">'3unique'</code></a></div></div><div class="param_labels_helpbtn d-flex align-items-center">
-        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--pairtools_walks_policy-help" aria-expanded="false">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="pairtools_parse_params" class=""><i class="fas fa-remove-format fa-fw"></i> <code>--pairtools_parse_params</code><a href="#pairtools_parse_params" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
+      <div class="col me-auto"><div id="--pairtools_parse_params-body" class="param-docs-body small"><p>The parameters used by parse</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --walks-policy mask  --no-flip --drop-seq --drop-sam'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--pairtools_parse_params-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
         </button></div></div>
-        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--pairtools_walks_policy-help">
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--pairtools_parse_params-help">
+          <p>See more details at <a href="https://pairtools.readthedocs.io/en/latest/parsing.html">https://pairtools.readthedocs.io/en/latest/parsing.html</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="pairtools_parse2_params" class=""><i class="fas fa-remove-format fa-fw"></i> <code>--pairtools_parse2_params</code><a href="#pairtools_parse2_params" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
+      <div class="col me-auto"><div id="--pairtools_parse2_params-body" class="param-docs-body small"><p>The parameters used by parse2</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --report-position outer --add-pair-index --no-flip --drop-seq --expand --max-expansion-depth 6'</code><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--pairtools_parse2_params-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--pairtools_parse2_params-help">
+          <p>See more details at <a href="https://pairtools.readthedocs.io/en/latest/parsing.html">https://pairtools.readthedocs.io/en/latest/parsing.html</a></p></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="pairtools_parse_version" class=""><i class="fas fa-remove-format fa-fw"></i> <code>--pairtools_parse_version</code><a href="#pairtools_parse_version" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
+      <div class="col me-auto"><div id="--pairtools_parse_version-body" class="param-docs-body small"><p>The parse tools used for the rescue. Avaiable choices are parse and parse2.</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="btn-group">
+                      <button type="button" class="btn btn-light border-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options: <code class="text-small">'parse'</code> (default)</button>
+                    <div class="dropdown-menu"><a class="dropdown-item"><code class="text-small">'parse' (default)</code></a><a class="dropdown-item"><code class="text-small">'parse2'</code></a></div></div><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--pairtools_parse_version-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--pairtools_parse_version-help">
           <p>See more details at <a href="https://pairtools.readthedocs.io/en/latest/parsing.html#multiple-ligations-walks">https://pairtools.readthedocs.io/en/latest/parsing.html#multiple-ligations-walks</a></p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-baseline mt-5 param-docs-row-group">
@@ -975,7 +995,9 @@
 <a class="nav-link scroll_to_link py-1 " href="#cutadapt_minimum_length"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠cutadapt_minimum_length</code></a>
 <a class="nav-link scroll_to_link py-1 " href="#cutadapt_action"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠cutadapt_action</code></a>
 <a class="nav-link scroll_to_link py-1 " href="#cutadapt_error_tolerance"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠cutadapt_error_tolerance</code></a>
-<a class="nav-link scroll_to_link py-1 " href="#pairtools_walks_policy"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠pairtools_walks_policy</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#pairtools_parse_params"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠pairtools_parse_params</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#pairtools_parse2_params"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠pairtools_parse2_params</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#pairtools_parse_version"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠pairtools_parse_version</code></a>
 </nav>
 
 <a class="nav-link scroll_to_link py-1 " href="#macs2-peak-calling-options"><i class="fas fa-mountains fa-fw"></i>MACS2 peak calling options</a>
