@@ -9,7 +9,7 @@ in single nucleotide resolution within and among chromosomes.</p>
 <pre><code class="language-bash"><span class="text-nowrap">--input</span> '[path to samplesheet file]'</code></pre>
 <h3 id="multiple-runs-of-the-same-sample" class="">Multiple runs of the same sample<a href="#multiple-runs-of-the-same-sample" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3>
 <p>The <code>sample</code> identifiers have to be the same when you have re-sequenced the same sample more than once e.g. to increase sequencing depth. The pipeline will concatenate the raw reads before performing any downstream analysis. Below is an example for the same sample sequenced across 3 lanes:</p>
-<pre><code class="language-console">group,replicate,fastq_1,fastq_2
+<pre><code class="language-csv">group,replicate,fastq_1,fastq_2
 CONTROL,1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
 CONTROL,1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz
 CONTROL,1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz</code></pre>
@@ -18,7 +18,7 @@ CONTROL,1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz</cod
 <p>HiCAR requires paired-end sequencing. Both fastq_1 and fastq_2 must be provided in the samplesheet. The samplesheet can have as many columns as you desire, however, there is a strict requirement for the first 4 columns to match those defined in the table below.</p>
 <p>If md5_1/2 is provided, the pipeline will check the checksums.</p>
 <p>A final samplesheet file consisting of two groups of paired-end data may look something like the one below. This is for 6 samples, where <code>TREATMENT_REP3</code> has been sequenced twice.</p>
-<pre><code class="language-console">group,replicate,fastq_1,fastq_2,md5_1,md5_2
+<pre><code class="language-csv">group,replicate,fastq_1,fastq_2,md5_1,md5_2
 CONTROL,1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz,,
 CONTROL,2,AEG588A2_S2_L002_R1_001.fastq.gz,AEG588A2_S2_L002_R2_001.fastq.gz,,
 CONTROL,3,AEG588A3_S3_L002_R1_001.fastq.gz,AEG588A3_S3_L002_R2_001.fastq.gz,,

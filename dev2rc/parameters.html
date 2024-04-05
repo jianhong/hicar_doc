@@ -259,7 +259,7 @@
     <div class="row param-docs-row border-bottom align-items-center">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="pairtools_parse2_params" class=""><i class="fas fa-remove-format fa-fw"></i> <code>--pairtools_parse2_params</code><a href="#pairtools_parse2_params" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
       <div class="col me-auto"><div id="--pairtools_parse2_params-body" class="param-docs-body small"><p>The parameters used by parse2</p></div></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --report-position outer --add-pair-index --no-flip --drop-seq --expand --max-expansion-depth 6'</code><div class="param_labels_helpbtn d-flex align-items-center">
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'--min-mapq 10 --max-insert-size 2000 --max-inter-align-gap 50 --report-position outer --add-pair-index --no-flip --drop-seq --expand --max-expansion-depth 6'</code><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--pairtools_parse2_params-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
         </button></div></div>
@@ -331,7 +331,7 @@
     <div class="row param-docs-row border-bottom align-items-center">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="maps_digest_file" class=""><i class="fas fa-stream fa-fw"></i> <code>--maps_digest_file</code><a href="#maps_digest_file" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
       <div class="col me-auto"><div id="--maps_digest_file-body" class="param-docs-body small"><p>output of restriction_cut_multipleenzyme.py.</p></div></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'None'</code><div class="param_labels_helpbtn d-flex align-items-center">
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--maps_digest_file-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
         </button></div></div>
@@ -413,7 +413,7 @@
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="peak_pair_block" class="toc-hidden"><i class="fas fa-th fa-fw"></i> <code>--peak_pair_block</code><a href="#peak_pair_block" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
       <div class="col me-auto"><div id="--peak_pair_block-body" class="param-docs-body small"><p>The block number of peak pair</p></div></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>1000000000</code><div class="param_labels_helpbtn d-flex align-items-center">
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>100000000</code><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--peak_pair_block-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
         </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
@@ -500,7 +500,12 @@
     <div class="row param-docs-row border-bottom align-items-center">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="apa_peak" class=""><i class="fas fa-caret-up fa-fw"></i> <code>--apa_peak</code><a href="#apa_peak" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
       <div class="col me-auto"><div id="--apa_peak-body" class="param-docs-body small"><p>The APA peak path</p></div></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'Anchor 1D peaks'</code></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--apa_peak-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="--apa_peak-help">
+          <p>Anchor 1D peaks</p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="apa_tool" class=""><i class="fab fa-adn fa-fw"></i> <code>--apa_tool</code><a href="#apa_tool" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
@@ -512,7 +517,7 @@
     <div class="row param-docs-row border-bottom align-items-center">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="apa_format" class=""><i class="fas fa-caret-up fa-fw"></i> <code>--apa_format</code><a href="#apa_format" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
       <div class="col me-auto"><div id="--apa_format-body" class="param-docs-body small"><p>The APA output figure format. Currently this parameter will not affect the Juicer output format (always png format).</p></div></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'png'</code></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'pdf'</code></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="compartments_tool" class=""><i class="fas fa-expand fa-fw"></i> <code>--compartments_tool</code><a href="#compartments_tool" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
@@ -710,7 +715,7 @@
     <div class="row param-docs-row border-bottom align-items-center param-docs-hidden collapse d-print-block">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="max_memory" class="toc-hidden"><i class="fas fa-memory fa-fw"></i> <code>--max_memory</code><a href="#max_memory" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
       <div class="col me-auto"><div id="--max_memory-body" class="param-docs-body small"><p>Maximum amount of memory that can be requested for any single job.</p></div></div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'128.GB'</code><div class="param_labels_helpbtn d-flex align-items-center">
+      <div class="col-auto d-flex flex-column align-items-end my-1"><code class="text-small overflow-scroll w-100"><span class="text-muted">default: </span>'240.GB'</code><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#--max_memory-help" aria-expanded="false">
           <i class="fas fa-question-circle"></i> Help
         </button><span class="badge bg-light text-dark small ms-2">hidden</span></div></div>
@@ -863,6 +868,11 @@
     <div class="row param-docs-row border-bottom align-items-center">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="resample_pairs" class=""><i class="fas fa-remove-format fa-fw"></i> <code>--resample_pairs</code><a href="#resample_pairs" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
       <div class="col me-auto"><div id="--resample_pairs-body" class="param-docs-body small"><p>resample the pairs by pairtools</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3 id="qc_only" class=""><i class="fab fa-creative-commons-pd fa-fw"></i> <code>--qc_only</code><a href="#qc_only" class="header-link scroll_to_link"><span class="fas fa-link"></span></a></h3></div>
+      <div class="col me-auto"><div id="--qc_only-body" class="param-docs-body small"><p>skip all downstream analysis and do qc only. It is a shortcut for --skip_peak_annotation --skip_diff_analysis --skip_compartments --skip_tads --skip_circos</p></div></div>
       <div class="col-auto d-flex flex-column align-items-end my-1"></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center">
@@ -1098,6 +1108,7 @@
 <nav class="nav flex-column flex-nowrap">
 <a class="nav-link scroll_to_link py-1 " href="#skip_cutadapt"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠skip_cutadapt</code></a>
 <a class="nav-link scroll_to_link py-1 " href="#resample_pairs"><i class="fas fa-remove-format fa-fw"></i><code>⁠-⁠-⁠resample_pairs</code></a>
+<a class="nav-link scroll_to_link py-1 " href="#qc_only"><i class="fab fa-creative-commons-pd fa-fw"></i><code>⁠-⁠-⁠qc_only</code></a>
 <a class="nav-link scroll_to_link py-1 " href="#skip_fastqc"><i class="fab fa-creative-commons-pd fa-fw"></i><code>⁠-⁠-⁠skip_fastqc</code></a>
 <a class="nav-link scroll_to_link py-1 " href="#skip_peak_annotation"><i class="fas fa-comment-slash fa-fw"></i><code>⁠-⁠-⁠skip_peak_annotation</code></a>
 <a class="nav-link scroll_to_link py-1 " href="#skip_diff_analysis"><i class="fas fa-ban fa-fw"></i><code>⁠-⁠-⁠skip_diff_analysis</code></a>

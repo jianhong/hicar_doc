@@ -486,7 +486,7 @@
     <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--pairtools_parse2_params</code></h3></div>
       <div class="col me-auto">
-                  <input id="pairtools_parse2_params" name="pairtools_parse2_params" type="text" value="--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --report-position outer --add-pair-index --no-flip --drop-seq --expand --max-expansion-depth 6" class="hicarinput" >
+                  <input id="pairtools_parse2_params" name="pairtools_parse2_params" type="text" value="--min-mapq 10 --max-insert-size 2000 --max-inter-align-gap 50 --report-position outer --add-pair-index --no-flip --drop-seq --expand --max-expansion-depth 6" class="hicarinput" >
               </div>
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--pairtools_parse2_params-body" class="param-docs-body small"><p>The parameters used by parse2</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#pairtools_parse2_params-help" aria-expanded="false">
@@ -570,7 +570,7 @@
     <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--maps_digest_file</code></h3></div>
       <div class="col me-auto">
-                  <input id="maps_digest_file" name="maps_digest_file" type="text" value="None" class="hicarinput" >
+                  <input id="maps_digest_file" name="maps_digest_file" type="text" value="" class="hicarinput" >
               </div>
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--maps_digest_file-body" class="param-docs-body small"><p>output of restriction_cut_multipleenzyme.py.</p></div><div class="param_labels_helpbtn d-flex align-items-center">
         <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#maps_digest_file-help" aria-expanded="false">
@@ -769,9 +769,14 @@
     <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--apa_peak</code></h3></div>
       <div class="col me-auto">
-                  <input id="apa_peak" name="apa_peak" type="text" value="Anchor 1D peaks" class="hicarinput" >
+                  <input id="apa_peak" name="apa_peak" type="text" value="" class="hicarinput" >
               </div>
-      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--apa_peak-body" class="param-docs-body small"><p>The APA peak path</p></div></div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--apa_peak-body" class="param-docs-body small"><p>The APA peak path</p></div><div class="param_labels_helpbtn d-flex align-items-center">
+        <button class="btn btn-sm btn-outline-info ms-2 mb-1 mt-1" data-bs-toggle="collapse" href="#apa_peak-help" aria-expanded="false">
+          <i class="fas fa-question-circle"></i> Help
+        </button></div></div>
+        <div class="collapse bg-lightgray col-12 param-docs-help-text p-2 mb-2 small d-print-block" id="apa_peak-help">
+          <p>Anchor 1D peaks</p></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--apa_tool</code></h3></div>
@@ -785,7 +790,7 @@
     <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--apa_format</code></h3></div>
       <div class="col me-auto">
-                  <input id="apa_format" name="apa_format" type="text" value="png" class="hicarinput" >
+                  <input id="apa_format" name="apa_format" type="text" value="pdf" class="hicarinput" >
               </div>
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--apa_format-body" class="param-docs-body small"><p>The APA output figure format. Currently this parameter will not affect the Juicer output format (always png format).</p></div></div>
     </div>
@@ -1159,6 +1164,13 @@
       <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--resample_pairs-body" class="param-docs-body small"><p>resample the pairs by pairtools</p></div></div>
     </div>
     <div class="row param-docs-row border-bottom align-items-center ">
+      <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--qc_only</code></h3></div>
+      <div class="col me-auto">
+                  <input id="qc_only" name="qc_only" type="checkbox" class="hicarinput" >
+              </div>
+      <div class="col-auto d-flex flex-column align-items-end my-1"><div id="--qc_only-body" class="param-docs-body small"><p>skip all downstream analysis and do qc only. It is a shortcut for --skip_peak_annotation --skip_diff_analysis --skip_compartments --skip_tads --skip_circos</p></div></div>
+    </div>
+    <div class="row param-docs-row border-bottom align-items-center ">
       <div class="col-10 col-md-5 col-lg-4 col-xl-3 small-h ps-3 param-docs-row-id-col"><h3><code>--skip_fastqc</code></h3></div>
       <div class="col me-auto">
                   <input id="skip_fastqc" name="skip_fastqc" type="checkbox" class="hicarinput" >
@@ -1317,7 +1329,7 @@ process {
       email_on_fail:{pattern:"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"},
       max_multiqc_email_size:{pattern:"^\d+(\.\d+)?\.?\s*(K|M|G|T)?B$"}}
       });
-      var defaultvalues={"input":"","method":'HiCAR',"anchor_peaks":"","outdir":"","email":"","multiqc_title":"","genome":"","fasta":"","bwa_index":"","gtf":"","gff":"","gene_bed":"","mappability":"","macs_gsize":"","ucscname":"","blacklist":"","publish_mappability":"","publish_genome":"","enzyme":'CviQI',"restriction_sites_cut_off":0.5,"cutadapt_5end":'^TAC',"cutadapt_3end":'skip',"cutadapt_minimum_length":'50:50',"cutadapt_action":'trim',"cutadapt_error_tolerance":0.15,"pairtools_parse_params":'--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --walks-policy mask  --no-flip --drop-seq --drop-sam',"pairtools_parse2_params":'--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --report-position outer --add-pair-index --no-flip --drop-seq --expand --max-expansion-depth 6',"pairtools_parse_version":'parse',"shiftsize":-75,"smooth_window":150,"qval_thresh":0.01,"cool_bin":'5000_10000',"maps_digest_file":'None',"maps_cutoff_counts":12,"maps_cutoff_fold_change":2,"maps_cutoff_fdr":2,"maps_filter":'None',"maps_model":'pospoisson',"maps_prepare_trans":"","snow_type":'SOCK',"hicdcplus_cutoff_fdr":0.05,"peakachu_pretrained_url":'http://3dgenome.fsm.northwestern.edu/peakachu/HiCAR-models/HiCAR-peakachu-pretrained.',"call_high_peak":"","r1_pval_thresh":0.1,"res_compartments":100000,"res_tads":10000,"tad_tool":'hicexplorer',"apa_peak":'Anchor 1D peaks',"apa_tool":'hicexplorer',"apa_format":'png',"compartments_tool":'cooltools',"interactions_tool":'maps',"da_tool":'diffhic',"v4c_tool":'hicexplorer',"tfea_tool":'homer',"juicer_tools_jar":'https://github.com/aidenlab/JuicerTools/releases/download/v3.0.0/juicer_tools.3.0.0.jar',"juicer_norm_method":'SCALE',"peak_interactions_threshold":2,"v4c_max_events":25,"hic_tools_jar":'https://github.com/aidenlab/HiCTools/releases/download/v3.30.00/hic_tools.3.30.00.jar',"multiqc_methods_description":"","skip_cutadapt":"","resample_pairs":"","skip_fastqc":"","skip_peak_annotation":"","skip_diff_analysis":"","skip_multiqc":"","do_apa":"","skip_compartments":"","skip_tads":"","skip_interactions":"","do_tfea":"","create_virtual_4c":"","skip_circos":"","do_contamination_analysis":"","kraken2_db":'https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20230605.tar.gz',"publish_raw_pairsam":"","publish_filtered_pairs":"","publish_filtered_h5":"","profile":"","config":""};
+      var defaultvalues={"input":"","method":'HiCAR',"anchor_peaks":"","outdir":"","email":"","multiqc_title":"","genome":"","fasta":"","bwa_index":"","gtf":"","gff":"","gene_bed":"","mappability":"","macs_gsize":"","ucscname":"","blacklist":"","publish_mappability":"","publish_genome":"","enzyme":'CviQI',"restriction_sites_cut_off":0.5,"cutadapt_5end":'^TAC',"cutadapt_3end":'skip',"cutadapt_minimum_length":'50:50',"cutadapt_action":'trim',"cutadapt_error_tolerance":0.15,"pairtools_parse_params":'--min-mapq 10 --max-molecule-size 2000 --max-inter-align-gap 50 --walks-policy mask  --no-flip --drop-seq --drop-sam',"pairtools_parse2_params":'--min-mapq 10 --max-insert-size 2000 --max-inter-align-gap 50 --report-position outer --add-pair-index --no-flip --drop-seq --expand --max-expansion-depth 6',"pairtools_parse_version":'parse',"shiftsize":-75,"smooth_window":150,"qval_thresh":0.01,"cool_bin":'5000_10000',"maps_digest_file":"","maps_cutoff_counts":12,"maps_cutoff_fold_change":2,"maps_cutoff_fdr":2,"maps_filter":'None',"maps_model":'pospoisson',"maps_prepare_trans":"","snow_type":'SOCK',"hicdcplus_cutoff_fdr":0.05,"peakachu_pretrained_url":'http://3dgenome.fsm.northwestern.edu/peakachu/HiCAR-models/HiCAR-peakachu-pretrained.',"call_high_peak":"","r1_pval_thresh":0.1,"res_compartments":100000,"res_tads":10000,"tad_tool":'hicexplorer',"apa_peak":"","apa_tool":'hicexplorer',"apa_format":'pdf',"compartments_tool":'cooltools',"interactions_tool":'maps',"da_tool":'diffhic',"v4c_tool":'hicexplorer',"tfea_tool":'homer',"juicer_tools_jar":'https://github.com/aidenlab/JuicerTools/releases/download/v3.0.0/juicer_tools.3.0.0.jar',"juicer_norm_method":'SCALE',"peak_interactions_threshold":2,"v4c_max_events":25,"hic_tools_jar":'https://github.com/aidenlab/HiCTools/releases/download/v3.30.00/hic_tools.3.30.00.jar',"multiqc_methods_description":"","skip_cutadapt":"","resample_pairs":"","qc_only":"","skip_fastqc":"","skip_peak_annotation":"","skip_diff_analysis":"","skip_multiqc":"","do_apa":"","skip_compartments":"","skip_tads":"","skip_interactions":"","do_tfea":"","create_virtual_4c":"","skip_circos":"","do_contamination_analysis":"","kraken2_db":'https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20230605.tar.gz',"publish_raw_pairsam":"","publish_filtered_pairs":"","publish_filtered_h5":"","profile":"","config":""};
       addbackslash = function(s){
         var ary = s.split("\\");
         if(ary[ary.length - 1].length > 80){
